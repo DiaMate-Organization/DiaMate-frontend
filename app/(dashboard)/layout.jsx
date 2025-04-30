@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { DashboardNav } from "@/components/DashboardNav";
-import { DashboardSidebar } from "@/components/DashboardSidebar";
+import { DashboardSidebar } from "@/components/sidebar/DashboardSidebar";
 
 export default function DashboardLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
