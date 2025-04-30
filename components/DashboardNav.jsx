@@ -72,12 +72,12 @@ export function DashboardNav({
           
           <ThemeToggle />
 
-          <Link href="/dashboard/profil">
+          {/* <Link href="/dashboard/profil">
             <Button variant="primary" size="sm" className="gap-2 bg-transparent border-2 hover:bg-muted">
               <User className="h-5 w-5" />
               <span className="hidden sm:inline">Bobon Santoso</span>
             </Button>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </header>
