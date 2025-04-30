@@ -1,3 +1,4 @@
+import RecomendationCard from "@/components/RecomendationCard";
 import SummaryRiskCard from "@/components/SummaryRiskCard";
 
 const mockUserData = {
@@ -24,7 +25,7 @@ const DashboardPage = () => {
       </div>
 
       <SummaryRiskCard userData={mockUserData} />
-
+      <RecomendationCard recommendations={[mockUserData.recommendations]} />
     </main>
   );
 };
