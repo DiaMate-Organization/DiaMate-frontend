@@ -1,62 +1,89 @@
-import Link from "next/link"
+'use client';
 
-import { Button } from "@/components/ui/button"
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useActionState, useEffect } from "react";
+import { toast } from "sonner";
+
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { login } from "@/lib/auth-actions"
-import SignInWithGoogleButton from "./SignInWithGoogleButton"
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { login } from "@/lib/auth-actions";
 
 export function LoginForm() {
+  const router = useRouter();
+  const [state, formAction] = useActionState(login, null);
+
+  useEffect(() => {
+    if (!state) return;
+    
+    // console.log('Login state:', state); // Debugging
+    
+    if (state.error) {
+      toast.error(state.message);
+    } else {
+      toast.success('Login berhasil!');
+      router.push('/dashboard');
+    }
+  }, [state, router]);
+
   return (
     <Card className="mx-auto max-w-sm">
       <CardHeader>
-        <CardTitle className="text-2xl">Login</CardTitle>
+        <CardTitle className="text-2xl">Masuk</CardTitle>
         <CardDescription>
-          Enter your email below to login to your account
+          Masukkan email dan password Anda untuk masuk
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form action="">
-            <div className="grid gap-4">
-              <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="m@example.com"
-                  required
-                />
-              </div>
-              <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
-                  <Link href="#" className="ml-auto inline-block text-sm underline">
-                    Forgot your password?
-                  </Link>
-                </div>
-                <Input id="password" name="password" type="password" required />
-              </div>
-              <Button type="submit" formAction={login} className="w-full">
-                Login
-              </Button>
-             <SignInWithGoogleButton/> 
+        <form action={formAction}>
+          <div className="grid gap-4">
+            <div className="grid gap-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="m@example.com"
+                required
+                autoComplete="username"
+              />
             </div>
+            <div className="grid gap-2">
+              <div className="flex items-center">
+                <Label htmlFor="password">Password</Label>
+                <Link href="#" className="ml-auto inline-block text-sm underline">
+                  Lupa password?
+                </Link>
+              </div>
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                required
+                minLength={6}
+                autoComplete="current-password"
+              />
+            </div>
+            <Button type="submit" className="w-full">
+              Masuk
+            </Button>
+          </div>
         </form>
         <div className="mt-4 text-center text-sm">
-          Don&apos;t have an account?{" "}
+          Belum punya akun?{" "}
           <Link href="/signup" className="underline">
-            Sign up
+            Daftar sekarang
           </Link>
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

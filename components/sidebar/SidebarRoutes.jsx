@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { logout } from "@/lib/auth-actions";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { 
@@ -91,25 +93,25 @@ export function SidebarRoutes({ isExpanded, onLinkClick }) {
 }
 
 export function LogoutButton({ isExpanded }) {
+  const router = useRouter();
+
+  const handleLogout = () => {
+    logout(); 
+    router.push("/login");
+  };
+
   return (
     <div className="p-4 border-t">
-      {isExpanded ? (
-        <Link href="/login">
-          <Button className="w-full gap-2 text-foreground  bg-primary hover:bg-primary/90">
-            <LogOut className="h-4 w-4" />
-            Logout
-          </Button>
-        </Link>
-      ) : (
-        <Link href="/login">
-          <Button 
-            className="w-full text-foreground bg-primary hover:bg-primary/90 px-0 justify-center" 
-            title="logout"
-          >
-            <LogOut className="h-4 w-4" />
-          </Button>
-        </Link>
-      )}
+      <Button
+        onClick={handleLogout}
+        className={`w-full text-foreground bg-primary hover:bg-primary/90 ${
+          isExpanded ? "gap-2" : "px-0 justify-center"
+        }`}
+        title={!isExpanded ? "Logout" : undefined}
+      >
+        <LogOut className="h-4 w-4" />
+        {isExpanded && "Logout"}
+      </Button>
     </div>
   );
 }

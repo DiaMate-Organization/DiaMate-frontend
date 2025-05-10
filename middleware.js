@@ -1,49 +1,24 @@
-import { NextResponse } from 'next/server'
-import { createClient } from '@/utils/supabase/middleware'
+// middleware.js
+import { NextResponse } from 'next/server';
 
 export async function middleware(request) {
-  try {
-    // Create a response object that we can modify
-    const response = NextResponse.next()
-    
-    // Create a Supabase client
-    const supabase = createClient()
+  const token = request.cookies.get('token')?.value;
+  const { pathname } = request.nextUrl;
 
-    // Refresh the session if needed
-    const { data: { session }, error } = await supabase.auth.getSession()
+  const protectedRoutes = ['/dashboard', '/profile'];
+  const authRoutes = ['/login', '/signup'];
 
-    // Define protected routes
-    const protectedRoutes = ['/dashboard', '/profile', '/settings']
-    const isProtectedRoute = protectedRoutes.some(route => 
-      request.nextUrl.pathname.startsWith(route)
-    )
-
-    // Redirect to login if accessing protected route without session
-    if (isProtectedRoute && !session) {
-      return NextResponse.redirect(new URL('/login', request.url))
-    }
-
-    // Redirect to dashboard if accessing auth pages while logged in
-    const authRoutes = ['/login', '/register']
-    const isAuthRoute = authRoutes.some(route => 
-      request.nextUrl.pathname.startsWith(route)
-    )
-
-    if (isAuthRoute && session) {
-      return NextResponse.redirect(new URL('/dashboard', request.url))
-    }
-
-    return response
-  } catch (e) {
-    // Handle any errors
-    return NextResponse.next()
+  if (protectedRoutes.some(route => pathname.startsWith(route)) && !token) {
+    return NextResponse.redirect(new URL('/login', request.url));
   }
+
+  if (authRoutes.includes(pathname) && token) {
+    return NextResponse.redirect(new URL('/dashboard', request.url));
+  }
+
+  return NextResponse.next();
 }
 
-// Configure which routes use this middleware
 export const config = {
-  matcher: [
-    
-    '/((?!_next/static|_next/image|favicon.ico).*)',
-  ],
-}
+  matcher: ['/dashboard/:path*', '/profile', '/login', '/signup'],
+};
