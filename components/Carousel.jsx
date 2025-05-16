@@ -22,7 +22,7 @@ export function CarouselComponent({ data }) {
         {data.map((item, index) => (
           <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
             <div className="p-1">
-              <Card className={"h-64 p-4"}>
+              <Card className={"p-4"}>
                 <CardContent className="flex flex-col w-full items-center justify-center p-6 ">
                   <Image
                     width={100}
