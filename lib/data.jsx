@@ -124,3 +124,31 @@ export const teams = [
     link: "https://microsoft.com",
   },
 ];
+
+export const faqs = [
+  {
+    question: "Apa itu DiaMate?",
+    answer:
+      "DiaMate adalah platform berbasis web yang digunakan untuk membantu pengguna melakukan deteksi dini risiko diabetes melalui asesmen sederhana, pemantauan harian, dan saran aktivitas sehat.",
+  },
+  {
+    question: "Apakah hasil dari DiaMate bisa menggantikan diagnosis dokter?",
+    answer:
+      "Tidak. Hasil dari DiaMate hanya bersifat prediktif awal dan tidak dapat menggantikan diagnosis dari tenaga medis profesional. Konsultasi dengan dokter tetap dianjurkan.",
+  },
+  {
+    question: "Apakah data saya aman di DiaMate?",
+    answer:
+      "Ya, data Anda disimpan dengan aman dan hanya digunakan untuk keperluan asesmen serta peningkatan layanan. Kami mematuhi kebijakan privasi dan keamanan data pengguna.",
+  },
+  {
+    question: "Siapa saja yang dapat menggunakan DiaMate?",
+    answer:
+      "DiaMate dapat digunakan oleh siapa saja yang ingin memahami risiko awal diabetes, baik untuk pencegahan maupun pemantauan kesehatan secara mandiri.",
+  },
+  {
+    question: "Apakah penggunaan DiaMate berbayar?",
+    answer:
+      "Tidak. Saat ini DiaMate dapat digunakan secara gratis sebagai bentuk kontribusi kami dalam meningkatkan kesadaran terhadap pentingnya deteksi dini diabetes.",
+  },
+];
