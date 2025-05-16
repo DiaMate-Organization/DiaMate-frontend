@@ -20,7 +20,11 @@ function LandingPageNav() {
   }, []);
 
   return (
-    <header className="fixed justify-between z-50 px-4 pt-4">
+    <header
+      className={`fixed w-full bg-[#0A0A0A] justify-between z-50 px-4 pt-4 ${
+        isScrolled ? "top-0" : "top-10"
+      }`}
+    >
       <div
         className={`container mx-auto max-w-7xl rounded-xl transition-all duration-300 ${
           isScrolled ? " shadow-md py-2" : " backdrop-blur-sm py-4"
@@ -42,7 +46,7 @@ function LandingPageNav() {
                     height={40}
                   />
                 </div>
-                <span className="text-xl font-bold">Diamate</span>
+                <span className="text-xl font-bold">DiaMate</span>
               </Link>
             </motion.div>
           </div>
@@ -54,22 +58,16 @@ function LandingPageNav() {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="hidden md:flex items-center space-x-8"
           >
-            <Link href="#features" className="text-gray-600 transition-colors">
+            <Link href="#features" className="text-white transition-colors">
               Features
             </Link>
-            <Link
-              href="#how-it-works"
-              className="text-gray-600 transition-colors"
-            >
+            <Link href="#how-it-works" className="text-white transition-colors">
               How It Works
             </Link>
-            <Link
-              href="#testimonials"
-              className="text-gray-600 transition-colors"
-            >
+            <Link href="#testimonials" className="text-white transition-colors">
               Testimonials
             </Link>
-            <Link href="#faq" className="text-gray-600 transition-colors">
+            <Link href="#faq" className="text-white transition-colors">
               FAQ
             </Link>
           </motion.nav>
@@ -97,7 +95,7 @@ function LandingPageNav() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black border-t mt-2 rounded-b-xl"
+            className="md:hidden bg-[#0A0A0A]  border-t mt-2 rounded-b-xl"
           >
             <div className="mx-4 py-4 flex flex-col space-y-4">
               <Link
