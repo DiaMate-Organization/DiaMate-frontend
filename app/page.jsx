@@ -1,4 +1,5 @@
 "use client";
+import { CarouselComponent } from "@/components/Carousel";
 import { Features } from "@/components/Features";
 import LandingPageNav from "@/components/LandingPageNav";
 import { AnimatedShinyText } from "@/components/magicui/animated-shiny-text";
@@ -7,9 +8,23 @@ import { BoxReveal } from "@/components/magicui/box-reveal";
 import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
 import { Marquee } from "@/components/magicui/marquee";
 import { Ripple } from "@/components/magicui/ripple";
+import { MarqueeReviews } from "@/components/Reviews";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { benefits, data, univ } from "@/lib/data";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { benefits, data, faqs, teams, univ } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import {
   ArrowRightIcon,
@@ -81,8 +96,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Intro section */}
-        <div className="mt-28 md:mt-52">
+        {/* Introduction section */}
+        <div className="mt-28 md:mt-52 lg:mx-20">
           <div className="flex gap-3 items-center">
             <div className="w-2 h-2 bg-primary rounded-full"></div>
             <p id="introduction" className="text-gray-400">
@@ -110,7 +125,7 @@ export default function Home() {
         </div>
 
         {/* Why us */}
-        <div className="relative mt-28 md:mt-52 items-center justify-center">
+        <div className="relative mt-28 md:mt-44 items-center justify-center">
           <div className="flex gap-3 items-center justify-center">
             <div className="w-2 h-2 bg-primary rounded-full"></div>
             <p className="text-gray-400">Benefits</p>
@@ -153,6 +168,127 @@ export default function Home() {
           <div>
             <Features data={data} />
           </div>
+        </div>
+      </div>
+
+      {/* Our Team */}
+      <div className="mx-12 md:mx-20  mt-28 md:mt-44 lg:pl-18">
+        <div className="flex gap-3 items-center justify-center">
+          <div className="w-2 h-2 bg-primary rounded-full"></div>
+          <p className="text-gray-400">Our Team</p>
+        </div>
+        <h2 className="text-center md:text-4xl text-3xl font-bold">
+          Team Dibalik DiaMate
+        </h2>
+        <div className="max-w-5xl mt-12 mx-auto px-8 flex justify-center items-center">
+          <CarouselComponent data={teams} />
+        </div>
+      </div>
+
+      {/* wall of love */}
+      <div className="mx-12 md:mx-20  mt-28 md:mt-44 lg:pl-18">
+        <div className="flex gap-3 items-center justify-center">
+          <div className="w-2 h-2 bg-primary rounded-full"></div>
+          <p className="text-gray-400">Wall of Love</p>
+        </div>
+        <h2 className="text-center md:text-4xl text-3xl font-bold">
+          Apa Kata Mereka
+        </h2>
+        <div className="mt-12">
+          <MarqueeReviews />
+        </div>
+      </div>
+
+      {/* Articles */}
+
+      <div className="mx-12 md:mx-20  mt-28 md:mt-44 lg:pl-18">
+        <div className="flex gap-3 items-center justify-center">
+          <div className="w-2 h-2 bg-primary rounded-full"></div>
+          <p className="text-gray-400">Articles</p>
+        </div>
+        <h2 className="text-center md:text-4xl text-3xl font-bold">
+          Insight Sehat ✨
+        </h2>
+
+        <div className="mt-12 flex flex-col items-center justify-center px-5 md:p-0">
+          <Carousel className="w-full max-w-7xl">
+            <CarouselContent className="-ml-1 gap-8">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <CarouselItem
+                  key={index}
+                  className="pl-1 md:basis-1/2 lg:basis-1/3"
+                >
+                  <div className="p-1">
+                    <div className={"border-0 bg-transparent"}>
+                      <Image
+                        width={500}
+                        height={500}
+                        src={"/article-1.jpg"}
+                        className="rounded-md"
+                        alt="articles iamge"
+                      />
+                      <div className="flex flex-col items-start py-2 px-2">
+                        <h3 className="text-2xl font-semibold">
+                          <a href="#">
+                            Makanan sehat yang bisa dimakan saat diabetes
+                          </a>
+                        </h3>
+
+                        <div className="flex mt-5 text-gray-400 w-full items-center justify-between">
+                          <p>By Dewi Persik</p>
+                          <p>6 minutes read</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
+      </div>
+
+      {/* FaQ */}
+      <div className="mx-12 md:mx-20  mt-28 md:mt-44 lg:pl-18">
+        <div className="flex gap-3 items-center justify-center">
+          <div className="w-2 h-2 bg-primary rounded-full"></div>
+          <p className="text-gray-400">FAQ</p>
+        </div>
+        <h2 className="text-center md:text-4xl text-3xl font-bold">
+          Sering Ditanya Nih
+        </h2>
+        <div className="flex flex-col mt-12 justify-center items-center">
+          {faqs.map((data, index) => (
+            <Accordion
+              key={index}
+              type="single"
+              collapsible
+              className="w-full md:max-w-4xl"
+            >
+              <AccordionItem value={`data - ${index}`}>
+                <AccordionTrigger className={"text-lg md:text-xl"}>
+                  {data.question}
+                </AccordionTrigger>
+                <AccordionContent
+                  className={" text-gray-400 text-sm md:text-lg"}
+                >
+                  {data.answer}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="mx-12 md:mx-20 mt-14 lg:pl-18">
+        <div className="py-2">
+          <footer className="text-center text-xs md:text-sm text-gray-400">
+            @ 2025 DiaMate Dev. All Right Reserved
+          </footer>
         </div>
       </div>
     </>
