@@ -21,7 +21,7 @@ function LandingPageNav() {
 
   return (
     <header
-      className={`fixed w-full rounded-md backdrop-blur-md justify-between z-50 px-4 pt-4 ${
+      className={`fixed w-full rounded-md backdrop-blur-lg justify-between z-50 px-4 pt-4 ${
         isScrolled ? "top-0" : "top-10"
       }`}
     >
@@ -108,7 +108,7 @@ function LandingPageNav() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden backdrop-blur-md  border-t mt-2 rounded-b-xl"
+            className="md:hidden backdrop-blur-lg  border-t mt-2 rounded-b-xl"
           >
             <div className="mx-4 py-4 flex flex-col space-y-4">
               <Link
