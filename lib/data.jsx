@@ -85,3 +85,42 @@ export const data = [
     icon: <ChartBarBig className="size-6 text-primary" />,
   },
 ];
+
+export const teams = [
+  {
+    image: "https://avatars.githubusercontent.com/u/583231?v=4",
+    name: "Ridho Bintang Aulia",
+    description: "Project Manager",
+    link: "https://stripe.com",
+  },
+  {
+    image: "https://avatars.githubusercontent.com/u/583231?v=4",
+    name: "Al Farizi Dwi Prasetyo",
+    description: "Fullstack Developer",
+    link: "https://netflix.com",
+  },
+  {
+    image: "https://avatars.githubusercontent.com/u/583231?v=4",
+    name: "Muhammad Faiz",
+    description: "Fullstack Developer",
+    link: "https://google.com",
+  },
+  {
+    image: "https://avatars.githubusercontent.com/u/583231?v=4",
+    name: "Leonard Bodhi Kumaro",
+    description: "Machine Learning Engineer",
+    link: "https://meta.com",
+  },
+  {
+    image: "https://avatars.githubusercontent.com/u/583231?v=4",
+    name: "Riandika Fathur Rochim",
+    description: "Machine Learning Engineer",
+    link: "https://amazon.com",
+  },
+  {
+    image: "https://avatars.githubusercontent.com/u/583231?v=4",
+    name: "Damar Syarafi Ramadhan",
+    description: "Machine Learning Engineer",
+    link: "https://microsoft.com",
+  },
+];

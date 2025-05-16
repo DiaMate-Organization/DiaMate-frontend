@@ -227,7 +227,7 @@ export function Features({
                         </AccordionTrigger>
 
                         <AccordionTrigger className="justify-start pl-0 text-left text-[16px] leading-4">
-                          {item.content}
+                          <p className="text-gray-400">{item.content}</p>
                         </AccordionTrigger>
                       </div>
                     </div>
@@ -293,7 +293,7 @@ export function Features({
                     ></div>
                   </div>
                   <h2 className="text-xl font-bold">{item.title}</h2>
-                  <p className="mx-0 max-w-sm text-balance text-sm">
+                  <p className="mx-0 max-w-sm text-balance text-sm text-gray-400">
                     {item.content}
                   </p>
                 </div>

@@ -1,4 +1,5 @@
 "use client";
+import { CarouselComponent } from "@/components/Carousel";
 import { Features } from "@/components/Features";
 import LandingPageNav from "@/components/LandingPageNav";
 import { AnimatedShinyText } from "@/components/magicui/animated-shiny-text";
@@ -9,7 +10,7 @@ import { Marquee } from "@/components/magicui/marquee";
 import { Ripple } from "@/components/magicui/ripple";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { benefits, data, univ } from "@/lib/data";
+import { benefits, data, teams, univ } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import {
   ArrowRightIcon,
@@ -81,8 +82,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Intro section */}
-        <div className="mt-28 md:mt-52">
+        {/* Introduction section */}
+        <div className="mt-28 md:mt-52 lg:mx-20">
           <div className="flex gap-3 items-center">
             <div className="w-2 h-2 bg-primary rounded-full"></div>
             <p id="introduction" className="text-gray-400">
@@ -153,6 +154,29 @@ export default function Home() {
           <div>
             <Features data={data} />
           </div>
+        </div>
+      </div>
+
+      {/* Our Team */}
+      <div className="mx-12 md:mx-20 mt-14 lg:pl-18">
+        <div className="flex gap-3 items-center justify-center">
+          <div className="w-2 h-2 bg-primary rounded-full"></div>
+          <p className="text-gray-400">Our Team</p>
+        </div>
+        <h2 className="text-center md:text-4xl text-3xl font-bold">
+          Team Dibalik DiaMate
+        </h2>
+        <div className="max-w-5xl mt-12 mx-auto px-8 flex justify-center items-center">
+          <CarouselComponent data={teams} />
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="mx-12 md:mx-20 mt-14 lg:pl-18">
+        <div className="py-2">
+          <footer className="text-center text-gray-400">
+            @ 2025 DiaMate Dev. All Right Reserved
+          </footer>
         </div>
       </div>
     </>
