@@ -2,27 +2,33 @@
 
 import {
   BotIcon,
+  ChartBarBig,
+  ClipboardCheck,
   CpuIcon,
+  Eye,
   HandshakeIcon,
+  NotepadText,
+  PackageSearch,
+  Settings,
   Smartphone,
   TimerIcon,
 } from "lucide-react";
 
 export const univ = [
   {
-    imageUrl: "/unud.png",
+    imageUrl: "/unud.jpg",
     profileUrl: "https://github.com/dillionverma",
   },
   {
-    imageUrl: "/stmiktd.png",
+    imageUrl: "/stmiktd.jpg",
     profileUrl: "https://github.com/tomonarifeehan",
   },
   {
-    imageUrl: "/umc.png",
+    imageUrl: "/umc.jpg",
     profileUrl: "https://github.com/BankkRoll",
   },
   {
-    imageUrl: "/gundar.png",
+    imageUrl: "/gundar.jpg",
     profileUrl: "https://github.com/safethecode",
   },
 ];
@@ -50,5 +56,32 @@ export const benefits = [
     icon: <BotIcon className="w-8 h-8" />,
     title: "Didukung Teknologi Terkini",
     content: "Menggunakan pendekatan machine learning",
+  },
+];
+
+export const data = [
+  {
+    id: 1,
+    title: "1. Isi Assessment",
+    content:
+      "Jawab beberapa pertanyaan sederhana untuk membantu kami memahami kondisi awal Anda.",
+    image: "/correct_answer.svg",
+    icon: <NotepadText className="size-6 text-primary" />,
+  },
+  {
+    id: 2,
+    title: "2.  Lihat Hasil Prediksi",
+    content:
+      "Dapatkan gambaran awal risiko diabetes berdasarkan hasil assessment Anda.",
+    image: "/done_checking.svg",
+    icon: <ClipboardCheck className="size-6 text-primary" />,
+  },
+  {
+    id: 3,
+    title: "3. Pantau Harian Anda",
+    content:
+      "Gunakan dashboard untuk melacak kondisi dan kebiasaan harian Anda secara berkala.",
+    image: "chart.svg",
+    icon: <ChartBarBig className="size-6 text-primary" />,
   },
 ];

@@ -1,14 +1,15 @@
 "use client";
-
+import { Features } from "@/components/Features";
 import LandingPageNav from "@/components/LandingPageNav";
 import { AnimatedShinyText } from "@/components/magicui/animated-shiny-text";
 import { AvatarCircles } from "@/components/magicui/avatar-circles";
 import { BoxReveal } from "@/components/magicui/box-reveal";
 import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
 import { Marquee } from "@/components/magicui/marquee";
+import { Ripple } from "@/components/magicui/ripple";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { benefits, univ } from "@/lib/data";
+import { benefits, data, univ } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import {
   ArrowRightIcon,
@@ -33,7 +34,7 @@ export default function Home() {
 
       {/* Main Content */}
 
-      <div className="mx-12 md:mx-20 mt-14 lg:pl-18">
+      <div className="mx-12 md:mx-20 mt-14 lg:pl-18 overflow-hidden">
         {/* Hero */}
         <div className="flex flex-col lg:flex-row items-center gap-5 justify-between md:mt-32">
           <div className="relative z-0 flex flex-col items-center justify-center text-center md:text-left md:items-start w-full lg:w-1/2 mt-10 md:mt-0">
@@ -109,7 +110,7 @@ export default function Home() {
         </div>
 
         {/* Why us */}
-        <div className="mt-28 md:mt-52 items-center justify-center">
+        <div className="relative mt-28 md:mt-52 items-center justify-center">
           <div className="flex gap-3 items-center justify-center">
             <div className="w-2 h-2 bg-primary rounded-full"></div>
             <p className="text-gray-400">Benefits</p>
@@ -117,10 +118,12 @@ export default function Home() {
           <h2 className="text-center md:text-4xl text-3xl font-bold">
             Kenapa pilih kami ?
           </h2>
-          <div className="flex items-center justify-center">
+
+          <Ripple mainCircleSize={380} numCircles={3} className={""} />
+          <div className="z-10 relative flex items-center justify-center">
             <div className="mt-15 lg:mx-24 grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-5">
               {benefits.map((benefit, index) => (
-                <Card key={index} className="lg:max-w-xl bg-transparent">
+                <Card key={index} className="lg:max-w-xl">
                   <CardHeader className="flex items-center justify-center">
                     {benefit.icon}
                   </CardHeader>
@@ -135,6 +138,20 @@ export default function Home() {
                 </Card>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* How it works */}
+        <div className="mt-28 flex flex-col justify-center w-full md:mt-52">
+          <div className="flex gap-3 items-center justify-center">
+            <div className="w-2 h-2 bg-primary rounded-full"></div>
+            <p className="text-gray-400">How it works</p>
+          </div>
+          <h2 className="text-center md:text-4xl text-3xl font-bold">
+            Bagaimana kita mendiagnosis
+          </h2>
+          <div>
+            <Features data={data} />
           </div>
         </div>
       </div>

@@ -21,7 +21,7 @@ function LandingPageNav() {
 
   return (
     <header
-      className={`fixed w-full bg-[#0A0A0A] justify-between z-50 px-4 pt-4 ${
+      className={`fixed w-full rounded-md backdrop-blur-md justify-between z-50 px-4 pt-4 ${
         isScrolled ? "top-0" : "top-10"
       }`}
     >
@@ -58,16 +58,28 @@ function LandingPageNav() {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="hidden md:flex items-center space-x-8"
           >
-            <Link href="#features" className="text-white transition-colors">
+            <Link
+              href="#features"
+              className="text-foreground hover:text-primary transition-colors"
+            >
               Features
             </Link>
-            <Link href="#how-it-works" className="text-white transition-colors">
+            <Link
+              href="#how-it-works"
+              className="text-foreground hover:text-primary transition-colors"
+            >
               How It Works
             </Link>
-            <Link href="#testimonials" className="text-white transition-colors">
+            <Link
+              href="#testimonials"
+              className="text-foreground hover:text-primary transition-colors"
+            >
               Testimonials
             </Link>
-            <Link href="#faq" className="text-white transition-colors">
+            <Link
+              href="#faq"
+              className="text-foreground hover:text-primary transition-colors"
+            >
               FAQ
             </Link>
           </motion.nav>
@@ -79,6 +91,7 @@ function LandingPageNav() {
               size="icon"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
+              className="hover:bg-primary"
             >
               {isMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -95,33 +108,33 @@ function LandingPageNav() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#0A0A0A]  border-t mt-2 rounded-b-xl"
+            className="md:hidden backdrop-blur-md  border-t mt-2 rounded-b-xl"
           >
             <div className="mx-4 py-4 flex flex-col space-y-4">
               <Link
                 href="#features"
-                className="text-gray-600 transition-colors py-2"
+                className="text-foreground hover:text-primary transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Features
               </Link>
               <Link
                 href="#how-it-works"
-                className="text-gray-600 transition-colors py-2"
+                className="text-foreground hover:text-primary transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 How It Works
               </Link>
               <Link
                 href="#testimonials"
-                className="text-gray-600 transition-colors py-2"
+                className="text-foreground hover:text-primary transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Testimonials
               </Link>
               <Link
                 href="#faq"
-                className="text-gray-600 transition-colors py-2"
+                className="text-foreground hover:text-primary transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 FAQ

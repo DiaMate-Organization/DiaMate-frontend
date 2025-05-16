@@ -81,6 +81,14 @@
   to {
     transform: translateY(calc(-100% - var(--gap)));
     }
+  }
+  @keyframes ripple {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    }
+  50% {
+    transform: translate(-50%, -50%) scale(0.9);
+    }
   }}
 
 :root {
@@ -137,54 +145,49 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
+  --background: oklch(0.1 0 0); /* Hampir hitam */
+  --foreground: oklch(0.98 0 0); /* Putih */
 
-  /* Primary color in dark mode - brighter blue */
-  --primary: oklch(0.7 0.2 230);
-  --primary-foreground: oklch(0.145 0 0);
+  --card: oklch(0.14 0 0); /* Hitam abu-abu sedikit terang */
+  --card-foreground: var(--foreground);
 
-  /* Secondary color in dark mode */
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.15 0 0); /* Sama seperti card, sedikit berbeda */
+  --popover-foreground: var(--foreground);
 
-  /* Muted colors in dark mode */
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
+  --primary: oklch(0.7 0.2 230); /* Biru cerah */
+  --primary-foreground: oklch(0.1 0 0); /* Hitam */
 
-  /* Accent colors in dark mode */
-  --accent: oklch(0.75 0.18 210);
-  --accent-foreground: oklch(0.145 0 0);
+  --secondary: oklch(0.25 0.05 230); /* Biru gelap */
+  --secondary-foreground: var(--foreground);
 
-  /* Destructive color in dark mode */
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.18 0.03 230); /* Biru sangat gelap */
+  --muted-foreground: oklch(0.7 0.05 230); /* Biru abu terang */
 
-  /* Border and input colors in dark mode */
+  --accent: oklch(0.65 0.15 230); /* Biru medium */
+  --accent-foreground: var(--foreground);
+
+  --destructive: oklch(0.4 0.1 230); /* Biru gelap sebagai pengganti merah */
+  --destructive-foreground: var(--foreground);
+
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.7 0.2 230 / 30%);
 
-  /* Chart colors in dark mode */
+  /* Hanya variasi biru untuk chart */
   --chart-1: oklch(0.7 0.2 230);
-  --chart-2: oklch(0.75 0.18 210);
-  --chart-3: oklch(0.8 0.15 200);
-  --chart-4: oklch(0.85 0.12 190);
-  --chart-5: oklch(0.9 0.1 180);
+  --chart-2: oklch(0.65 0.18 230);
+  --chart-3: oklch(0.6 0.16 230);
+  --chart-4: oklch(0.55 0.14 230);
+  --chart-5: oklch(0.5 0.12 230);
 
-  /* Sidebar colors in dark mode */
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.7 0.2 230);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --sidebar: oklch(0.12 0 0); /* Hitam pekat */
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: oklch(0.4 0.05 230); /* Biru sangat gelap */
 }
 
 @layer base {
