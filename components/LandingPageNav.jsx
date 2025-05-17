@@ -64,12 +64,15 @@ function LandingPageNav() {
               <Link
                 key={index}
                 href={data.link}
-                className="text-foreground hover:text-primary transition-colors"
+                className="text-foreground hover:text-muted-foreground transition-colors"
               >
                 {data.name}
               </Link>
             ))}
             <ThemeToggle />
+            <Link href="/login">
+              <Button className={"hover:bg-secondary"}>Sign In</Button>
+            </Link>
           </motion.nav>
 
           {/* Mobile Menu Button */}
@@ -105,19 +108,21 @@ function LandingPageNav() {
                 <Link
                   key={index}
                   href={data.link}
-                  className="text-foreground hover:text-primary transition-colors py-2"
+                  className="text-foreground hover:text-muted-foreground transition-colors py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {data.name}
                 </Link>
               ))}
 
-              <Button
-                variant={"primary"}
-                className={"bg-primary hover:bg-secondary"}
-              >
-                Login
-              </Button>
+              <Link href={"/login"} className="w-full sm:w-auto">
+                <Button
+                  variant={"primary"}
+                  className={"bg-primary hover:bg-secondary w-full "}
+                >
+                  Login
+                </Button>
+              </Link>
             </div>
           </motion.div>
         )}

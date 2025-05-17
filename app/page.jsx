@@ -316,9 +316,11 @@ export default function Home() {
               <div className="text-3xl md:text-4xl font-bold dark:text-white text-center">
                 Mulai sekarang, Tubuhmu akan berterimaksih nanti.
               </div>
-              <Button className="rounded-full w-fit text-foreground px-4 py-2">
-                Mulai
-              </Button>
+              <Link href="#">
+                <Button className="rounded-full w-fit text-foreground px-4 py-2">
+                  Mulai
+                </Button>
+              </Link>
             </motion.div>
           </AuroraBackground>
         </div>
