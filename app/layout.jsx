@@ -4,6 +4,8 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "@/components/ui/sonner";
 import LandingPageNav from "@/components/LandingPageNav";
 import { Marquee } from "@/components/magicui/marquee";
+import Link from "next/link";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,6 +45,8 @@ export default function RootLayout({ children }) {
           <LandingPageNav />
           {children}
           <Toaster />
+          {/* Footer */}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
