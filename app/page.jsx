@@ -45,16 +45,6 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-      <div className="w-full mb-5 bg-yellow-100 text-yellow-900 px-4 text-sm md:text-base text-center flex items-center justify-center gap-5 border-b border-yellow-300">
-        <Marquee>
-          <strong className="font-medium">Perhatian:</strong> Hasil dari DiaMate
-          bersifat prediktif awal dan bukan diagnosis medis.
-        </Marquee>
-      </div>
-
-      {/* Navbar */}
-      <LandingPageNav />
-
       {/* Main Content */}
 
       <div className="mx-12 md:mx-20 mt-14 lg:pl-18 overflow-hidden">
