@@ -187,13 +187,13 @@
   --popover-foreground: var(--foreground);
 
   --primary: oklch(0.7 0.2 230); /* Biru cerah */
-  --primary-foreground: oklch(0.1 0 0); /* Hitam */
+  --primary-foreground: oklch(0.98 0 0); 
 
   --secondary: oklch(0.25 0.05 230); /* Biru gelap */
   --secondary-foreground: var(--foreground);
 
   --muted: oklch(0.18 0.03 230); /* Biru sangat gelap */
-  --muted-foreground: oklch(0.7 0.05 230); /* Biru abu terang */
+  --muted-foreground: oklch(0.75 0 0); /* abu terang */
 
   --accent: oklch(0.65 0.15 230); /* Biru medium */
   --accent-foreground: var(--foreground);
@@ -222,6 +222,52 @@
   --sidebar-ring: oklch(0.4 0.05 230); /* Biru sangat gelap */
 }
 
+.light {
+  --background: oklch(0.98 0 0); /* Putih */
+  --foreground: oklch(0.1 0 0); /* Hampir hitam */
+
+  --card: oklch(0.97 0 0); /* Abu terang */
+  --card-foreground: var(--foreground);
+
+  --popover: oklch(0.96 0 0); /* Hampir sama dengan card */
+  --popover-foreground: var(--foreground);
+
+  --primary: oklch(0.65 0.2 230); /* Biru cerah */
+  --primary-foreground: oklch(0.98 0 0); /* Putih */
+
+  --secondary: oklch(0.88 0.05 230); /* Biru sangat terang */
+  --secondary-foreground: var(--foreground);
+
+  --muted: oklch(0.92 0.02 230); /* Biru pucat */
+  --muted-foreground: oklch(0.4 0 0); /* Abu gelap, mirip gray-500 */
+
+  --accent: oklch(0.7 0.15 230); /* Biru medium */
+  --accent-foreground: var(--foreground);
+
+  --destructive: oklch(0.5 0.1 230); /* Biru gelap */
+  --destructive-foreground: var(--background); /* Putih */
+
+  --border: oklch(0 0 0 / 10%);
+  --input: oklch(0 0 0 / 15%);
+  --ring: oklch(0.65 0.2 230 / 30%);
+
+  --chart-1: oklch(0.65 0.2 230);
+  --chart-2: oklch(0.6 0.18 230);
+  --chart-3: oklch(0.55 0.16 230);
+  --chart-4: oklch(0.5 0.14 230);
+  --chart-5: oklch(0.45 0.12 230);
+
+  --sidebar: oklch(0.95 0 0); /* Putih abu-abu */
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: oklch(0.65 0.05 230); /* Biru medium terang */
+}
+
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -229,6 +275,14 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#introduction, #benefits, #how-it-works, #our-team, #articles, #faq {
+  scroll-margin-top: 6rem;
 }
 
 .container {

@@ -152,3 +152,30 @@ export const faqs = [
       "Tidak. Saat ini DiaMate dapat digunakan secara gratis sebagai bentuk kontribusi kami dalam meningkatkan kesadaran terhadap pentingnya deteksi dini diabetes.",
   },
 ];
+
+export const navItemLanding = [
+  {
+    name: "Introduction",
+    link: "#introduction",
+  },
+  {
+    name: "Benefits",
+    link: "#benefits",
+  },
+  {
+    name: "How It Works",
+    link: "#how-it-works",
+  },
+  {
+    name: "Our Team",
+    link: "#our-team",
+  },
+  {
+    name: "Articles",
+    link: "#articles",
+  },
+  {
+    name: "FAQ",
+    link: "#faq",
+  },
+];
