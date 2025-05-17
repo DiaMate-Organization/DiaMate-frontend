@@ -11,6 +11,7 @@ import { Ripple } from "@/components/magicui/ripple";
 import { MarqueeReviews } from "@/components/Reviews";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { motion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
@@ -33,6 +34,13 @@ import {
   TriangleAlertIcon,
 } from "lucide-react";
 import Image from "next/image";
+import { AuroraBackground } from "@/components/ui/aurora-background";
+import {
+  GitHubLogoIcon,
+  InstagramLogoIcon,
+  LinkedInLogoIcon,
+} from "@radix-ui/react-icons";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -289,12 +297,50 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Footer i guess */}
+      <div className="mx-12 md:mx-20 mt-28 md:mt-44 lg:pl-18">
+        <div className="flex items-center justify-center">
+          <AuroraBackground
+            className={"rounded-md w-full md:px-8 h-80 md:h-96"}
+          >
+            <motion.div
+              initial={{ opacity: 0.0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.3,
+                duration: 0.8,
+                ease: "easeInOut",
+              }}
+              className="relative flex flex-col gap-4 items-center justify-center px-4"
+            >
+              <div className="text-3xl md:text-4xl font-bold dark:text-white text-center">
+                Mulai sekarang, Tubuhmu akan berterimaksih nanti.
+              </div>
+              <Button className="rounded-full w-fit text-foreground px-4 py-2">
+                Mulai
+              </Button>
+            </motion.div>
+          </AuroraBackground>
+        </div>
+      </div>
+
       {/* Footer */}
-      <div className="mx-12 md:mx-20 mt-14 lg:pl-18">
-        <div className="py-2">
+      <div className="mx-12 md:mx-20 mt-14 lg:pl-18 py-5">
+        <div className="py-2 flex flex-col md:flex-between gap-5">
           <footer className="text-center text-xs md:text-sm text-muted-foreground">
             @ 2025 DiaMate Dev. All Right Reserved
           </footer>
+          <div className="flex items-center justify-center gap-5">
+            <Link href={"https://github.com/DiaMate-Organization"}>
+              <GitHubLogoIcon className="h-5 w-5" />
+            </Link>
+            <Link href={"https://linkedin.com"}>
+              <LinkedInLogoIcon className="h-5 w-5" />
+            </Link>
+            <Link href={"https://instagram.com"}>
+              <InstagramLogoIcon className="h-5 w-5" />
+            </Link>
+          </div>
         </div>
       </div>
     </>
