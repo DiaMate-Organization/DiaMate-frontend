@@ -1,8 +1,11 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { Toaster } from "@/components/ui/sonner"
-
+import { Toaster } from "@/components/ui/sonner";
+import LandingPageNav from "@/components/LandingPageNav";
+import { Marquee } from "@/components/magicui/marquee";
+import Link from "next/link";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,14 +29,25 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-            <Toaster />
-          </ThemeProvider>
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="w-full mb-5 bg-yellow-100 text-yellow-900 px-4 text-sm md:text-base text-center flex items-center justify-center gap-5 border-b border-yellow-300">
+            <Marquee>
+              <strong className="font-medium">Perhatian:</strong> Hasil dari
+              DiaMate bersifat prediktif awal dan bukan diagnosis medis.
+            </Marquee>
+          </div>
+
+          {/* Navbar */}
+          <LandingPageNav />
+          {children}
+          <Toaster />
+          {/* Footer */}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

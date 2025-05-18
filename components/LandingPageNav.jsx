@@ -4,8 +4,10 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { Menu, X } from "lucide-react";
+import { Ghost, Menu, X } from "lucide-react";
 import Image from "next/image";
+import { ThemeToggle } from "./ThemeToggle";
+import { navItemLanding } from "@/lib/data";
 
 function LandingPageNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,13 +23,13 @@ function LandingPageNav() {
 
   return (
     <header
-      className={`fixed w-full rounded-md backdrop-blur-lg justify-between z-50 px-4 pt-4 ${
-        isScrolled ? "top-0" : "top-10"
+      className={`fixed w-full rounded-md justify-between z-50 px-4 pt-4 ${
+        isScrolled ? "top-0 md:top-2" : "top-10"
       }`}
     >
       <div
-        className={`container mx-auto max-w-7xl rounded-xl transition-all duration-300 ${
-          isScrolled ? " shadow-md py-2" : " backdrop-blur-sm py-4"
+        className={`container mx-auto max-w-7xl backdrop-blur-lg rounded-xl bg-background/50 transition-all duration-300 ${
+          isScrolled ? " shadow-md py-2" : " py-4"
         }`}
       >
         <div className="mx-4 flex justify-between items-center">
@@ -58,34 +60,25 @@ function LandingPageNav() {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="hidden md:flex items-center space-x-8"
           >
-            <Link
-              href="#features"
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              Features
-            </Link>
-            <Link
-              href="#how-it-works"
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              How It Works
-            </Link>
-            <Link
-              href="#testimonials"
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              Testimonials
-            </Link>
-            <Link
-              href="#faq"
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              FAQ
+            {navItemLanding.map((data, index) => (
+              <Link
+                key={index}
+                href={data.link}
+                className="text-foreground hover:text-muted-foreground transition-colors"
+              >
+                {data.name}
+              </Link>
+            ))}
+            <ThemeToggle />
+            <Link href="/login">
+              <Button className={"hover:bg-secondary"}>Sign In</Button>
             </Link>
           </motion.nav>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex gap-3">
+            <ThemeToggle />
+
             <Button
               variant="ghost"
               size="icon"
@@ -111,33 +104,24 @@ function LandingPageNav() {
             className="md:hidden backdrop-blur-lg  border-t mt-2 rounded-b-xl"
           >
             <div className="mx-4 py-4 flex flex-col space-y-4">
-              <Link
-                href="#features"
-                className="text-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Features
-              </Link>
-              <Link
-                href="#how-it-works"
-                className="text-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                How It Works
-              </Link>
-              <Link
-                href="#testimonials"
-                className="text-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Testimonials
-              </Link>
-              <Link
-                href="#faq"
-                className="text-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                FAQ
+              {navItemLanding.map((data, index) => (
+                <Link
+                  key={index}
+                  href={data.link}
+                  className="text-foreground hover:text-muted-foreground transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {data.name}
+                </Link>
+              ))}
+
+              <Link href={"/login"} className="w-full sm:w-auto">
+                <Button
+                  variant={"primary"}
+                  className={"bg-primary hover:bg-secondary w-full "}
+                >
+                  Login
+                </Button>
               </Link>
             </div>
           </motion.div>

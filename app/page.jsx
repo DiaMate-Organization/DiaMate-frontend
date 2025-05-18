@@ -11,6 +11,7 @@ import { Ripple } from "@/components/magicui/ripple";
 import { MarqueeReviews } from "@/components/Reviews";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { motion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
@@ -33,20 +34,17 @@ import {
   TriangleAlertIcon,
 } from "lucide-react";
 import Image from "next/image";
+import { AuroraBackground } from "@/components/ui/aurora-background";
+import {
+  GitHubLogoIcon,
+  InstagramLogoIcon,
+  LinkedInLogoIcon,
+} from "@radix-ui/react-icons";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <>
-      <div className="w-full mb-5 bg-yellow-100 text-yellow-900 px-4 text-sm md:text-base text-center flex items-center justify-center gap-5 border-b border-yellow-300">
-        <Marquee>
-          <strong className="font-medium">Perhatian:</strong> Hasil dari DiaMate
-          bersifat prediktif awal dan bukan diagnosis medis.
-        </Marquee>
-      </div>
-
-      {/* Navbar */}
-      <LandingPageNav />
-
       {/* Main Content */}
 
       <div className="mx-12 md:mx-20 mt-14 lg:pl-18 overflow-hidden">
@@ -68,7 +66,7 @@ export default function Home() {
             <h1 className="lg:text-7xl text-4xl font-medium leading-tight tracking-tight">
               Sehat itu mudah kalau dimulai hari ini.
             </h1>
-            <p className="mt-4 lg:text-lg text-base text-gray-400 leading-snug max-w-xl">
+            <p className="mt-4 lg:text-lg text-base text-muted-foreground leading-snug max-w-xl">
               Diamate membantu kamu mengenali risiko diabetes lebih awal dengan
               teknologi AI 🤖 dan langkah yang sederhana.
             </p>
@@ -77,7 +75,7 @@ export default function Home() {
             </div>
 
             <div className="flex mt-12 flex-col gap-2">
-              <p className="lg:text-lg text-base text-gray-400 leading-snug max-w-xl">
+              <p className="lg:text-lg text-base text-muted-foreground leading-snug max-w-xl">
                 Dibuat oleh mahasiswa dari 4 universitas yang kredibel
               </p>
               <div className="flex items-center md:justify-start justify-center">
@@ -97,10 +95,10 @@ export default function Home() {
         </div>
 
         {/* Introduction section */}
-        <div className="mt-28 md:mt-52 lg:mx-20">
+        <div id="introduction" className="mt-28 md:mt-52 lg:mx-20">
           <div className="flex gap-3 items-center">
             <div className="w-2 h-2 bg-primary rounded-full"></div>
-            <p id="introduction" className="text-gray-400">
+            <p id="introduction" className="text-muted-foreground">
               Introduction
             </p>
           </div>
@@ -125,10 +123,13 @@ export default function Home() {
         </div>
 
         {/* Why us */}
-        <div className="relative mt-28 md:mt-44 items-center justify-center">
+        <div
+          id="benefits"
+          className="relative mt-28 md:mt-44 items-center justify-center"
+        >
           <div className="flex gap-3 items-center justify-center">
             <div className="w-2 h-2 bg-primary rounded-full"></div>
-            <p className="text-gray-400">Benefits</p>
+            <p className="text-muted-foreground">Benefits</p>
           </div>
           <h2 className="text-center md:text-4xl text-3xl font-bold">
             Kenapa pilih kami ?
@@ -146,7 +147,7 @@ export default function Home() {
                     <h3 className="text-center text-base md:text-2xl font-medium">
                       {benefit.title}
                     </h3>
-                    <p className="mt-4 text-center text-gray-400 tracking-tight leading-snug">
+                    <p className="mt-4 text-center text-muted-foreground tracking-tight leading-snug">
                       {benefit.content}
                     </p>
                   </CardContent>
@@ -157,10 +158,13 @@ export default function Home() {
         </div>
 
         {/* How it works */}
-        <div className="mt-28 flex flex-col justify-center w-full md:mt-52">
+        <div
+          id="how-it-works"
+          className="mt-28 flex flex-col justify-center w-full md:mt-52"
+        >
           <div className="flex gap-3 items-center justify-center">
             <div className="w-2 h-2 bg-primary rounded-full"></div>
-            <p className="text-gray-400">How it works</p>
+            <p className="text-muted-foreground">How it works</p>
           </div>
           <h2 className="text-center md:text-4xl text-3xl font-bold">
             Bagaimana kita mendiagnosis
@@ -172,10 +176,10 @@ export default function Home() {
       </div>
 
       {/* Our Team */}
-      <div className="mx-12 md:mx-20  mt-28 md:mt-44 lg:pl-18">
+      <div id="our-team" className="mx-12 md:mx-20  mt-28 md:mt-44 lg:pl-18">
         <div className="flex gap-3 items-center justify-center">
           <div className="w-2 h-2 bg-primary rounded-full"></div>
-          <p className="text-gray-400">Our Team</p>
+          <p className="text-muted-foreground">Our Team</p>
         </div>
         <h2 className="text-center md:text-4xl text-3xl font-bold">
           Team Dibalik DiaMate
@@ -189,7 +193,7 @@ export default function Home() {
       <div className="mx-12 md:mx-20  mt-28 md:mt-44 lg:pl-18">
         <div className="flex gap-3 items-center justify-center">
           <div className="w-2 h-2 bg-primary rounded-full"></div>
-          <p className="text-gray-400">Wall of Love</p>
+          <p className="text-muted-foreground">Wall of Love</p>
         </div>
         <h2 className="text-center md:text-4xl text-3xl font-bold">
           Apa Kata Mereka
@@ -201,10 +205,10 @@ export default function Home() {
 
       {/* Articles */}
 
-      <div className="mx-12 md:mx-20  mt-28 md:mt-44 lg:pl-18">
+      <div id="articles" className="mx-12 md:mx-20  mt-28 md:mt-44 lg:pl-18">
         <div className="flex gap-3 items-center justify-center">
           <div className="w-2 h-2 bg-primary rounded-full"></div>
-          <p className="text-gray-400">Articles</p>
+          <p className="text-muted-foreground">Articles</p>
         </div>
         <h2 className="text-center md:text-4xl text-3xl font-bold">
           Insight Sehat ✨
@@ -234,9 +238,9 @@ export default function Home() {
                           </a>
                         </h3>
 
-                        <div className="flex mt-5 text-gray-400 w-full items-center justify-between">
-                          <p>By Dewi Persik</p>
-                          <p>6 minutes read</p>
+                        <div className="flex mt-5 text-muted-foreground w-full items-center justify-between">
+                          <p>Dewi Persik</p>
+                          <p>6 Menit</p>
                         </div>
                       </div>
                     </div>
@@ -252,10 +256,10 @@ export default function Home() {
       </div>
 
       {/* FaQ */}
-      <div className="mx-12 md:mx-20  mt-28 md:mt-44 lg:pl-18">
+      <div id="faq" className="mx-12 md:mx-20  mt-28 md:mt-44 lg:pl-18">
         <div className="flex gap-3 items-center justify-center">
           <div className="w-2 h-2 bg-primary rounded-full"></div>
-          <p className="text-gray-400">FAQ</p>
+          <p className="text-muted-foreground">FAQ</p>
         </div>
         <h2 className="text-center md:text-4xl text-3xl font-bold">
           Sering Ditanya Nih
@@ -273,7 +277,7 @@ export default function Home() {
                   {data.question}
                 </AccordionTrigger>
                 <AccordionContent
-                  className={" text-gray-400 text-sm md:text-lg"}
+                  className={" text-muted-foreground text-sm md:text-lg"}
                 >
                   {data.answer}
                 </AccordionContent>
@@ -283,12 +287,32 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Footer */}
-      <div className="mx-12 md:mx-20 mt-14 lg:pl-18">
-        <div className="py-2">
-          <footer className="text-center text-xs md:text-sm text-gray-400">
-            @ 2025 DiaMate Dev. All Right Reserved
-          </footer>
+      {/* Footer i guess */}
+      <div className="mx-12 md:mx-20 mt-28 md:mt-44 lg:pl-18">
+        <div className="flex items-center justify-center">
+          <AuroraBackground
+            className={"rounded-md w-full md:px-8 h-80 md:h-96"}
+          >
+            <motion.div
+              initial={{ opacity: 0.0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.3,
+                duration: 0.8,
+                ease: "easeInOut",
+              }}
+              className="relative flex flex-col gap-4 items-center justify-center px-4"
+            >
+              <div className="text-3xl md:text-4xl font-bold dark:text-white text-center">
+                Mulai sekarang, Tubuhmu akan berterimaksih nanti.
+              </div>
+              <Link href="#">
+                <Button className="rounded-full w-fit text-foreground px-4 py-2">
+                  Mulai
+                </Button>
+              </Link>
+            </motion.div>
+          </AuroraBackground>
         </div>
       </div>
     </>
