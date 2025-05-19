@@ -27,7 +27,9 @@ import { AuroraBackground } from "@/components/ui/aurora-background";
 
 import Link from "next/link";
 import { Spotlight } from "@/components/ui/spotlight-new";
-import ArticleSection from "@/components/ArticleSection";
+import ArticleCarousel from "@/components/article/ArticleCarousel";
+import { Suspense } from "react";
+import ArticlesListSkeleton from "@/components/article/ArticleListSkeleton";
 
 export default function Home() {
   return (
@@ -207,7 +209,7 @@ export default function Home() {
         </h2>
 
         <div className="mt-12 flex flex-col items-center justify-center px-5 md:p-0">
-          <ArticleSection />
+          <ArticleCarousel />
         </div>
       </div>
 

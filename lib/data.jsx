@@ -179,3 +179,141 @@ export const navItemLanding = [
     link: "#faq",
   },
 ];
+
+export const ArticleList = [
+  {
+    title: "Pentingnya Gaya Hidup Sehat untuk Mencegah Diabetes",
+    slug: "pentingnya-gaya-hidup-sehat-untuk-mencegah-diabetes",
+    image: "/article-1.jpg",
+    content: `<article>
+      <h2>Pentingnya Gaya Hidup Sehat untuk Mencegah Diabetes</h2>
+      <p>
+        Diabetes tipe 2 dapat dicegah dengan perubahan gaya hidup sederhana namun konsisten. Mengatur pola makan,
+        berolahraga rutin, dan menjaga berat badan ideal adalah langkah awal yang efektif.
+      </p>
+      <p>
+        Orang dengan riwayat keluarga diabetes perlu lebih waspada dan proaktif dalam menjaga kesehatan.
+        Konsumsi makanan rendah gula dan tinggi serat dapat menurunkan risiko secara signifikan.
+      </p>
+      <ul>
+        <li>Konsumsi sayur dan buah segar setiap hari</li>
+        <li>Kurangi asupan makanan olahan dan tinggi gula</li>
+        <li>Lakukan aktivitas fisik minimal 30 menit per hari</li>
+        <li>Periksa kadar gula darah secara rutin</li>
+      </ul>
+      <p>
+        Dengan komitmen terhadap gaya hidup sehat, risiko terkena diabetes bisa dikurangi secara signifikan.
+      </p>
+    </article>`,
+    creator: "Dewi Persik",
+    readMinutes: "6",
+  },
+  {
+    title: "Makanan yang Baik untuk Penderita Diabetes",
+    slug: "makanan-yang-baik-untuk-penderita-diabetes",
+    image: "/article-1.jpg",
+    content: `<article>
+      <h2>Makanan yang Baik untuk Penderita Diabetes</h2>
+      <p>
+        Pemilihan makanan sangat penting bagi penderita diabetes. Makanan dengan indeks glikemik rendah
+        membantu menjaga kadar gula darah tetap stabil.
+      </p>
+      <p>
+        Beberapa jenis makanan yang disarankan antara lain sayuran hijau, biji-bijian utuh, ikan berlemak, dan kacang-kacangan.
+        Hindari makanan tinggi gula dan karbohidrat olahan seperti roti putih dan soda.
+      </p>
+      <ul>
+        <li>Sayuran hijau (bayam, brokoli)</li>
+        <li>Oatmeal dan quinoa</li>
+        <li>Salmon, sarden, dan tuna</li>
+        <li>Alpukat dan kacang almond</li>
+      </ul>
+      <p>
+        Mengatur pola makan dengan benar dapat membantu pengendalian gula darah dan mencegah komplikasi diabetes.
+      </p>
+    </article>`,
+    creator: "Budi Hartono",
+    readMinutes: "5",
+  },
+  {
+    title: "Pentingnya Olahraga bagi Penderita Diabetes",
+    slug: "pentingnya-olahraga-bagi-penderita-diabetes",
+    image: "/article-1.jpg",
+    content: `<article>
+      <h2>Pentingnya Olahraga bagi Penderita Diabetes</h2>
+      <p>
+        Olahraga memiliki peran penting dalam pengelolaan diabetes. Aktivitas fisik membantu tubuh menggunakan insulin lebih efisien
+        dan menurunkan kadar gula darah secara alami.
+      </p>
+      <p>
+        Penderita diabetes dianjurkan untuk melakukan olahraga ringan hingga sedang seperti jalan kaki, bersepeda, atau berenang.
+        Konsistensi lebih penting daripada intensitas tinggi.
+      </p>
+      <ul>
+        <li>Meningkatkan sensitivitas insulin</li>
+        <li>Membantu menjaga berat badan</li>
+        <li>Menurunkan tekanan darah</li>
+        <li>Meningkatkan energi dan suasana hati</li>
+      </ul>
+      <p>
+        Konsultasikan dengan dokter sebelum memulai program olahraga, terutama bagi yang memiliki komplikasi tertentu.
+      </p>
+    </article>`,
+    creator: "Siti Aminah",
+    readMinutes: "4",
+  },
+  {
+    title: "Bahaya Diabetes Jika Tidak Ditangani Sejak Dini",
+    slug: "bahaya-diabetes-jika-tidak-ditangani-sejak-dini",
+    image: "/article-1.jpg",
+    content: `<article>
+      <h2>Bahaya Diabetes Jika Tidak Ditangani Sejak Dini</h2>
+      <p>
+        Diabetes yang tidak ditangani dapat menyebabkan komplikasi serius seperti penyakit jantung, kerusakan ginjal,
+        gangguan penglihatan, dan luka yang sulit sembuh.
+      </p>
+      <p>
+        Deteksi dini melalui pemeriksaan rutin sangat penting, terutama bagi mereka dengan faktor risiko seperti obesitas
+        dan riwayat keluarga.
+      </p>
+      <ul>
+        <li>Retinopati diabetik (gangguan mata)</li>
+        <li>Nefropati (kerusakan ginjal)</li>
+        <li>Neuropati (kerusakan saraf)</li>
+        <li>Risiko amputasi akibat luka kronis</li>
+      </ul>
+      <p>
+        Penting untuk segera mengambil langkah pengelolaan diabetes dengan pengobatan, pola makan sehat, dan perubahan gaya hidup.
+      </p>
+    </article>`,
+    creator: "Andi Wijaya",
+    readMinutes: "5",
+  },
+  {
+    title: "Cara Memantau Gula Darah Sendiri di Rumah",
+    slug: "cara-memantau-gula-darah-sendiri-di-rumah",
+    image: "/article-1.jpg",
+    content: `<article>
+      <h2>Cara Memantau Gula Darah Sendiri di Rumah</h2>
+      <p>
+        Memantau kadar gula darah secara mandiri sangat penting bagi penderita diabetes untuk menjaga kadar gula tetap terkendali.
+        Pengukuran rutin membantu pengambilan keputusan terkait makanan, aktivitas, dan pengobatan.
+      </p>
+      <p>
+        Gunakan alat glucometer yang mudah digunakan di rumah. Periksa sebelum makan, 2 jam setelah makan, dan sebelum tidur
+        untuk mengetahui pola naik-turunnya gula darah.
+      </p>
+      <ul>
+        <li>Cuci tangan sebelum tes</li>
+        <li>Gunakan jarum baru setiap kali</li>
+        <li>Catat hasil untuk evaluasi bersama dokter</li>
+        <li>Kenali tanda-tanda hipo dan hiperglikemia</li>
+      </ul>
+      <p>
+        Konsistensi dalam pemantauan membantu mencegah komplikasi jangka panjang dan memberi kontrol lebih besar atas kesehatan.
+      </p>
+    </article>`,
+    creator: "Rina Marlina",
+    readMinutes: "4",
+  },
+];
