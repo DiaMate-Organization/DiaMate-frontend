@@ -41,6 +41,7 @@ import {
   LinkedInLogoIcon,
 } from "@radix-ui/react-icons";
 import Link from "next/link";
+import { Spotlight } from "@/components/ui/spotlight-new";
 
 export default function Home() {
   return (
@@ -50,6 +51,7 @@ export default function Home() {
       <div className="mx-12 md:mx-20 mt-14 lg:pl-18 overflow-hidden">
         {/* Hero */}
         <div className="flex flex-col lg:flex-row items-center gap-5 justify-between md:mt-32">
+          <Spotlight />
           <div className="relative z-0 flex flex-col items-center justify-center text-center md:text-left md:items-start w-full lg:w-1/2 mt-10 md:mt-0">
             <div className="pb-5">
               <div
@@ -102,13 +104,17 @@ export default function Home() {
               Introduction
             </p>
           </div>
-          <div className="flex flex-col md:flex-row justify-between gap-8 md:gap-20">
+          <div className="flex flex-col md:flex-row justify-between gap-3 md:gap-20">
             <h2 className="text-3xl w-full md:text-4xl leading-snug font-bold ">
               Tentang kami
             </h2>
             <div>
-              <BoxReveal boxColor={"#00B0FF"} duration={1}>
-                <h3 className="text-xl md:text-2xl lg:text-3xl tracking-tight leading-snug">
+              <BoxReveal
+                boxColor={"#00B0FF"}
+                duration={1}
+                className={"rounded-md"}
+              >
+                <h3 className="text-xl text-muted-foreground md:text-white md:text-2xl lg:text-3xl tracking-tight leading-snug">
                   <span className="text-primary italic">DiaMate</span> hadir
                   sebagai solusi digital yang membantu Anda mengenali risiko
                   diabetes sejak dini melalui teknologi machine learning. Kami
