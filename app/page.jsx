@@ -18,38 +18,28 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+
 import { benefits, data, faqs, teams, univ } from "@/lib/data";
 import { cn } from "@/lib/utils";
-import {
-  ArrowRightIcon,
-  ChartColumnBig,
-  InfoIcon,
-  TriangleAlertIcon,
-} from "lucide-react";
+
 import Image from "next/image";
 import { AuroraBackground } from "@/components/ui/aurora-background";
-import {
-  GitHubLogoIcon,
-  InstagramLogoIcon,
-  LinkedInLogoIcon,
-} from "@radix-ui/react-icons";
+
 import Link from "next/link";
+import { Spotlight } from "@/components/ui/spotlight-new";
+import ArticleCarousel from "@/components/article/ArticleCarousel";
+import { Suspense } from "react";
+import ArticlesListSkeleton from "@/components/article/ArticleListSkeleton";
 
 export default function Home() {
   return (
     <>
       {/* Main Content */}
-
-      <div className="mx-12 md:mx-20 mt-14 lg:pl-18 overflow-hidden">
+      <div className="mx-12 md:mx-20 mt-14 lg:pl-18">
         {/* Hero */}
         <div className="flex flex-col lg:flex-row items-center gap-5 justify-between md:mt-32">
+          <Spotlight />
+
           <div className="relative z-0 flex flex-col items-center justify-center text-center md:text-left md:items-start w-full lg:w-1/2 mt-10 md:mt-0">
             <div className="pb-5">
               <div
@@ -102,13 +92,17 @@ export default function Home() {
               Introduction
             </p>
           </div>
-          <div className="flex flex-col md:flex-row justify-between gap-8 md:gap-20">
+          <div className="flex flex-col md:flex-row justify-between gap-3 md:gap-20">
             <h2 className="text-3xl w-full md:text-4xl leading-snug font-bold ">
               Tentang kami
             </h2>
             <div>
-              <BoxReveal boxColor={"#00B0FF"} duration={1}>
-                <h3 className="text-xl md:text-2xl lg:text-3xl tracking-tight leading-snug">
+              <BoxReveal
+                boxColor={"#00B0FF"}
+                duration={1}
+                className={"rounded-md"}
+              >
+                <h3 className="text-xl text-muted-foreground md:text-foreground md:text-2xl lg:text-3xl tracking-tight leading-snug">
                   <span className="text-primary italic">DiaMate</span> hadir
                   sebagai solusi digital yang membantu Anda mengenali risiko
                   diabetes sejak dini melalui teknologi machine learning. Kami
@@ -215,43 +209,7 @@ export default function Home() {
         </h2>
 
         <div className="mt-12 flex flex-col items-center justify-center px-5 md:p-0">
-          <Carousel className="w-full max-w-7xl">
-            <CarouselContent className="-ml-1 gap-8">
-              {Array.from({ length: 5 }).map((_, index) => (
-                <CarouselItem
-                  key={index}
-                  className="pl-1 md:basis-1/2 lg:basis-1/3"
-                >
-                  <div className="p-1">
-                    <div className={"border-0 bg-transparent"}>
-                      <Image
-                        width={500}
-                        height={500}
-                        src={"/article-1.jpg"}
-                        className="rounded-md"
-                        alt="articles iamge"
-                      />
-                      <div className="flex flex-col items-start py-2 px-2">
-                        <h3 className="text-2xl font-semibold">
-                          <a href="#">
-                            Makanan sehat yang bisa dimakan saat diabetes
-                          </a>
-                        </h3>
-
-                        <div className="flex mt-5 text-muted-foreground w-full items-center justify-between">
-                          <p>Dewi Persik</p>
-                          <p>6 Menit</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+          <ArticleCarousel />
         </div>
       </div>
 
