@@ -156,27 +156,27 @@ export const faqs = [
 export const navItemLanding = [
   {
     name: "Introduction",
-    link: "#introduction",
+    link: "/#introduction",
   },
   {
     name: "Benefits",
-    link: "#benefits",
+    link: "/#benefits",
   },
   {
     name: "How It Works",
-    link: "#how-it-works",
+    link: "/#how-it-works",
   },
   {
     name: "Our Team",
-    link: "#our-team",
+    link: "/#our-team",
   },
   {
     name: "Articles",
-    link: "#articles",
+    link: "/#articles",
   },
   {
     name: "FAQ",
-    link: "#faq",
+    link: "/#faq",
   },
 ];
 

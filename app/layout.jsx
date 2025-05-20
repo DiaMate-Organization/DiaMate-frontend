@@ -6,6 +6,7 @@ import LandingPageNav from "@/components/LandingPageNav";
 import { Marquee } from "@/components/magicui/marquee";
 import Link from "next/link";
 import Footer from "@/components/Footer";
+import { Spotlight } from "@/components/ui/spotlight-new";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,7 +44,10 @@ export default function RootLayout({ children }) {
 
           {/* Navbar */}
           <LandingPageNav />
-          {children}
+          <div className="flex relative w-full">
+            <Spotlight />
+          </div>
+          <main className="mx-12 md:mx-20 mt-14 lg:pl-18">{children}</main>
           <Toaster />
           {/* Footer */}
           <Footer />

@@ -40,7 +40,7 @@ function LandingPageNav() {
               transition={{ duration: 0.5 }}
             >
               <Link href="/" className="flex items-center">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center mr-2 overflow-hidden">
+                <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full flex items-center justify-center mr-2 overflow-hidden">
                   <Image
                     src="/logo.webp"
                     alt="Logo Diamate"
@@ -48,7 +48,7 @@ function LandingPageNav() {
                     height={40}
                   />
                 </div>
-                <span className="text-xl font-bold">DiaMate</span>
+                <span className="text-md md:text-xl font-bold">DiaMate</span>
               </Link>
             </motion.div>
           </div>

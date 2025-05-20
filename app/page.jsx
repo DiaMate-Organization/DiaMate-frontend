@@ -26,18 +26,15 @@ import Image from "next/image";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 
 import Link from "next/link";
-import { Spotlight } from "@/components/ui/spotlight-new";
 import ArticleCarousel from "@/components/article/ArticleCarousel";
 
 export default function Home() {
   return (
     <>
       {/* Main Content */}
-      <div className="mx-12 md:mx-20 mt-14 lg:pl-18">
+      <div className="overflow-hidden">
         {/* Hero */}
-        <div className="flex flex-col lg:flex-row items-center gap-5 justify-between md:mt-32">
-          {/* <Spotlight /> */}
-
+        <div className="flex flex-col lg:flex-row items-center gap-5 justify-between md:mt-32 w-full">
           <div className="relative z-0 flex flex-col items-center justify-center text-center md:text-left md:items-start w-full lg:w-1/2 mt-10 md:mt-0">
             <div className="pb-5">
               <div
@@ -165,86 +162,88 @@ export default function Home() {
             <Features data={data} />
           </div>
         </div>
-      </div>
 
-      {/* Our Team */}
-      <div id="our-team" className="mx-12 md:mx-20  mt-28 md:mt-44 lg:pl-18">
-        <div className="flex gap-3 items-center justify-center">
-          <div className="w-2 h-2 bg-primary rounded-full"></div>
-          <p className="text-muted-foreground">Our Team</p>
+        {/* Our Team */}
+        <div id="our-team" className="md:mx-20  mt-28 md:mt-44 lg:pl-18">
+          <div className="flex gap-3 items-center justify-center">
+            <div className="w-2 h-2 bg-primary rounded-full"></div>
+            <p className="text-muted-foreground">Our Team</p>
+          </div>
+          <h2 className="text-center md:text-4xl text-3xl font-bold">
+            Team Dibalik DiaMate
+          </h2>
+          <div className="max-w-5xl mt-12 mx-auto px-8 flex justify-center items-center">
+            <CarouselComponent data={teams} />
+          </div>
         </div>
-        <h2 className="text-center md:text-4xl text-3xl font-bold">
-          Team Dibalik DiaMate
-        </h2>
-        <div className="max-w-5xl mt-12 mx-auto px-8 flex justify-center items-center">
-          <CarouselComponent data={teams} />
-        </div>
-      </div>
 
-      {/* wall of love */}
-      <div className="mx-12 md:mx-20  mt-28 md:mt-44 lg:pl-18">
-        <div className="flex gap-3 items-center justify-center">
-          <div className="w-2 h-2 bg-primary rounded-full"></div>
-          <p className="text-muted-foreground">Wall of Love</p>
+        {/* wall of love */}
+        <div className="md:mx-20  mt-28 md:mt-44 lg:pl-18">
+          <div className="flex gap-3 items-center justify-center">
+            <div className="w-2 h-2 bg-primary rounded-full"></div>
+            <p className="text-muted-foreground">Wall of Love</p>
+          </div>
+          <h2 className="text-center md:text-4xl text-3xl font-bold">
+            Apa Kata Mereka
+          </h2>
+          <div className="mt-12">
+            <MarqueeReviews />
+          </div>
         </div>
-        <h2 className="text-center md:text-4xl text-3xl font-bold">
-          Apa Kata Mereka
-        </h2>
-        <div className="mt-12">
-          <MarqueeReviews />
-        </div>
-      </div>
 
-      {/* Articles */}
+        {/* Articles */}
 
-      <div id="articles" className="mx-12 md:mx-20  mt-28 md:mt-44 lg:pl-18">
-        <div className="flex gap-3 items-center justify-center">
-          <div className="w-2 h-2 bg-primary rounded-full"></div>
-          <p className="text-muted-foreground">Articles</p>
-        </div>
-        <h2 className="text-center md:text-4xl text-3xl font-bold">
-          Insight Sehat ✨
-        </h2>
+        <div id="articles" className="md:mx-20  mt-28 md:mt-44 lg:pl-18">
+          <div className="flex gap-3 items-center justify-center">
+            <div className="w-2 h-2 bg-primary rounded-full"></div>
+            <p className="text-muted-foreground">Articles</p>
+          </div>
+          <h2 className="text-center md:text-4xl text-3xl font-bold">
+            Insight Sehat ✨
+          </h2>
 
-        <div className="mt-12 flex flex-col items-center justify-center px-5 md:p-0">
-          <ArticleCarousel />
+          <div className="mt-12 flex flex-col items-center justify-center px-5 md:p-0">
+            <ArticleCarousel />
+          </div>
         </div>
-      </div>
 
-      {/* FaQ */}
-      <div id="faq" className="mx-12 md:mx-20  mt-28 md:mt-44 lg:pl-18">
-        <div className="flex gap-3 items-center justify-center">
-          <div className="w-2 h-2 bg-primary rounded-full"></div>
-          <p className="text-muted-foreground">FAQ</p>
+        {/* FaQ */}
+        <div id="faq" className=" md:mx-20  mt-28 md:mt-44 lg:pl-18">
+          <div className="flex gap-3 items-center justify-center">
+            <div className="w-2 h-2 bg-primary rounded-full"></div>
+            <p className="text-muted-foreground">FAQ</p>
+          </div>
+          <h2 className="text-center md:text-4xl text-3xl font-bold">
+            Sering Ditanya Nih
+          </h2>
+          <div className="flex flex-col mt-12 justify-center items-center">
+            {faqs.map((data, index) => (
+              <Accordion
+                key={index}
+                type="single"
+                collapsible
+                className="w-full md:max-w-4xl"
+              >
+                <AccordionItem value={`data - ${index}`}>
+                  <AccordionTrigger className={"text-lg md:text-xl"}>
+                    {data.question}
+                  </AccordionTrigger>
+                  <AccordionContent
+                    className={" text-muted-foreground text-sm md:text-lg"}
+                  >
+                    {data.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            ))}
+          </div>
         </div>
-        <h2 className="text-center md:text-4xl text-3xl font-bold">
-          Sering Ditanya Nih
-        </h2>
-        <div className="flex flex-col mt-12 justify-center items-center">
-          {faqs.map((data, index) => (
-            <Accordion
-              key={index}
-              type="single"
-              collapsible
-              className="w-full md:max-w-4xl"
-            >
-              <AccordionItem value={`data - ${index}`}>
-                <AccordionTrigger className={"text-lg md:text-xl"}>
-                  {data.question}
-                </AccordionTrigger>
-                <AccordionContent
-                  className={" text-muted-foreground text-sm md:text-lg"}
-                >
-                  {data.answer}
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          ))}
-        </div>
+
+        {/* End Content */}
       </div>
 
       {/* Footer i guess */}
-      <div className="mx-12 md:mx-20 mt-28 md:mt-44 lg:pl-18">
+      <div className="mt-28 md:mt-44">
         <div className="flex items-center justify-center">
           <AuroraBackground
             className={"rounded-md w-full md:px-8 h-80 md:h-96"}
