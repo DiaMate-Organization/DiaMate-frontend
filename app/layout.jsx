@@ -48,7 +48,7 @@ export default function RootLayout({ children }) {
           {/* Navbar */}
           <div className="relative z-10">
             <LandingPageNav />
-            <main className="mx-12 md:mx-20 mt-14 lg:pl-18">{children}</main>
+            <main className="px-8 md:px-20 mt-14">{children}</main>
           </div>
           <Toaster />
           {/* Footer */}

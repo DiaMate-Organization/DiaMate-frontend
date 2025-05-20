@@ -34,7 +34,7 @@ export default function Home() {
       {/* Main Content */}
       <div className="overflow-hidden">
         {/* Hero */}
-        <div className="flex flex-col lg:flex-row items-center gap-5 justify-between md:mt-32 w-full">
+        <div className="  flex flex-col lg:flex-row items-center gap-5 justify-between md:mt-32 w-full">
           <div className="relative z-0 flex flex-col items-center justify-center text-center md:text-left md:items-start w-full lg:w-1/2 mt-10 md:mt-0">
             <div className="pb-5">
               <div
@@ -80,7 +80,7 @@ export default function Home() {
         </div>
 
         {/* Introduction section */}
-        <div id="introduction" className="mt-28 md:mt-52 lg:mx-20">
+        <div id="introduction" className=" mt-28 md:mt-52">
           <div className="flex gap-3 items-center">
             <div className="w-2 h-2 bg-primary rounded-full"></div>
             <p id="introduction" className="text-muted-foreground">
@@ -114,7 +114,7 @@ export default function Home() {
         {/* Why us */}
         <div
           id="benefits"
-          className="relative mt-28 md:mt-44 items-center justify-center"
+          className=" relative mt-28 md:mt-44 items-center justify-center"
         >
           <div className="flex gap-3 items-center justify-center">
             <div className="w-2 h-2 bg-primary rounded-full"></div>
@@ -149,7 +149,7 @@ export default function Home() {
         {/* How it works */}
         <div
           id="how-it-works"
-          className="mt-28 flex flex-col justify-center w-full md:mt-52"
+          className=" mt-28 flex flex-col justify-center w-full md:mt-52"
         >
           <div className="flex gap-3 items-center justify-center">
             <div className="w-2 h-2 bg-primary rounded-full"></div>
@@ -164,7 +164,7 @@ export default function Home() {
         </div>
 
         {/* Our Team */}
-        <div id="our-team" className="md:mx-20  mt-28 md:mt-44 lg:pl-18">
+        <div id="our-team" className="px-0 md:px-0 mt-28 md:mt-44">
           <div className="flex gap-3 items-center justify-center">
             <div className="w-2 h-2 bg-primary rounded-full"></div>
             <p className="text-muted-foreground">Our Team</p>
@@ -172,13 +172,13 @@ export default function Home() {
           <h2 className="text-center md:text-4xl text-3xl font-bold">
             Team Dibalik DiaMate
           </h2>
-          <div className="max-w-5xl mt-12 mx-auto px-8 flex justify-center items-center">
+          <div className="w-full md:max-w-5xl mt-12 mx-auto px-3 md:px-8 flex justify-center items-center">
             <CarouselComponent data={teams} />
           </div>
         </div>
 
         {/* wall of love */}
-        <div className="md:mx-20  mt-28 md:mt-44 lg:pl-18">
+        <div className="mt-28 md:mt-44">
           <div className="flex gap-3 items-center justify-center">
             <div className="w-2 h-2 bg-primary rounded-full"></div>
             <p className="text-muted-foreground">Wall of Love</p>
@@ -193,7 +193,7 @@ export default function Home() {
 
         {/* Articles */}
 
-        <div id="articles" className="md:mx-20  mt-28 md:mt-44 lg:pl-18">
+        <div id="articles" className="px-0 md:px-0  mt-28 md:mt-44">
           <div className="flex gap-3 items-center justify-center">
             <div className="w-2 h-2 bg-primary rounded-full"></div>
             <p className="text-muted-foreground">Articles</p>
@@ -208,7 +208,7 @@ export default function Home() {
         </div>
 
         {/* FaQ */}
-        <div id="faq" className=" md:mx-20  mt-28 md:mt-44 lg:pl-18">
+        <div id="faq" className="mt-28 md:mt-44">
           <div className="flex gap-3 items-center justify-center">
             <div className="w-2 h-2 bg-primary rounded-full"></div>
             <p className="text-muted-foreground">FAQ</p>

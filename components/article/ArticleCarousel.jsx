@@ -77,9 +77,10 @@ function ArticleCarousel() {
           </CarouselItem>
         ))}
       </CarouselContent>
-
-      <CarouselPrevious />
-      <CarouselNext />
+      <div className="mt-4 flex justify-end gap-4">
+        <CarouselPrevious className="static translate-y-0 left-auto right-auto" />
+        <CarouselNext className="static translate-y-0 left-auto right-auto" />
+      </div>
     </Carousel>
   );
 }

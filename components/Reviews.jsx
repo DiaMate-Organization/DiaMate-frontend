@@ -1,38 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { cn } from "@/lib/utils";
 import { Marquee } from "./magicui/marquee";
-const reviews = [
-  {
-    name: "Rina",
-    username: "@rina",
-    body: "Keren banget! Aku bisa cek risiko diabetes kapan aja tanpa ribet. UI-nya juga nyaman dipakai.",
-    img: "https://avatar.vercel.sh/rina",
-  },
-  {
-    name: "Andi",
-    username: "@andi",
-    body: "Sempet khawatir soal kesehatanku, tapi DiaMate bantu banget buat tahu kondisi awal dan ngasih arahan.",
-    img: "https://avatar.vercel.sh/andi",
-  },
-  {
-    name: "Tika",
-    username: "@tika",
-    body: "Tracking harian di dashboard-nya bikin aku lebih semangat jaga pola hidup sehat. Thanks DiaMate!",
-    img: "https://avatar.vercel.sh/tika",
-  },
-  {
-    name: "Bagas",
-    username: "@bagas",
-    body: "Suka banget sama fitur rekomendasi aktivitasnya. Simple tapi bermanfaat banget buat pemula kayak aku.",
-    img: "https://avatar.vercel.sh/bagas",
-  },
-  {
-    name: "Sari",
-    username: "@sari",
-    body: "Ini web bukan cuma informatif, tapi juga ngebantu aku lebih aware sama risiko diabetes dari sekarang.",
-    img: "https://avatar.vercel.sh/sari",
-  },
-];
+import { reviews } from "@/lib/data";
 
 const firstRow = reviews.slice(0, reviews.length / 2);
 const secondRow = reviews.slice(reviews.length / 2);
@@ -68,13 +37,13 @@ export function MarqueeReviews() {
   return (
     <div className="relative flex h-96 w-full flex-row items-center justify-center gap-4 overflow-hidden [perspective:600px]">
       <div
-        className="flex flex-row items-center gap-2 md:gap-12"
+        className="flex flex-row items-center gap-2 md:gap-7"
         style={{
           transform:
             "translateX(-100px) translateY(0px) translateZ(-100px) rotateX(20deg) rotateY(-10deg) rotateZ(20deg)",
         }}
       >
-        <Marquee pauseOnHover vertical className="[--duration:20s]">
+        <Marquee pauseOnHover vertical className="[--duration:30s]">
           {firstRow.map((review) => (
             <ReviewCard key={review.username} {...review} />
           ))}
@@ -84,13 +53,13 @@ export function MarqueeReviews() {
             <ReviewCard key={review.username} {...review} />
           ))}
         </Marquee>
-        <Marquee reverse pauseOnHover className="[--duration:20s]" vertical>
+        <Marquee reverse pauseOnHover className="[--duration:24s]" vertical>
           {thirdRow.map((review) => (
             <ReviewCard key={review.username} {...review} />
           ))}
         </Marquee>
-        <Marquee pauseOnHover className="[--duration:20s]" vertical>
-          {fourthRow.map((review) => (
+        <Marquee reverse pauseOnHover className="[--duration:24s]" vertical>
+          {thirdRow.map((review) => (
             <ReviewCard key={review.username} {...review} />
           ))}
         </Marquee>
