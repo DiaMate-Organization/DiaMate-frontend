@@ -28,8 +28,6 @@ import { AuroraBackground } from "@/components/ui/aurora-background";
 import Link from "next/link";
 import { Spotlight } from "@/components/ui/spotlight-new";
 import ArticleCarousel from "@/components/article/ArticleCarousel";
-import { Suspense } from "react";
-import ArticlesListSkeleton from "@/components/article/ArticleListSkeleton";
 
 export default function Home() {
   return (
@@ -38,7 +36,7 @@ export default function Home() {
       <div className="mx-12 md:mx-20 mt-14 lg:pl-18">
         {/* Hero */}
         <div className="flex flex-col lg:flex-row items-center gap-5 justify-between md:mt-32">
-          <Spotlight />
+          {/* <Spotlight /> */}
 
           <div className="relative z-0 flex flex-col items-center justify-center text-center md:text-left md:items-start w-full lg:w-1/2 mt-10 md:mt-0">
             <div className="pb-5">

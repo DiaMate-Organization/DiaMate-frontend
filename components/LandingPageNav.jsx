@@ -58,7 +58,7 @@ function LandingPageNav() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="hidden md:flex items-center space-x-8"
+            className="hidden lg:flex items-center space-x-8"
           >
             {navItemLanding.map((data, index) => (
               <Link
@@ -76,7 +76,7 @@ function LandingPageNav() {
           </motion.nav>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex gap-3">
+          <div className="lg:hidden flex gap-3">
             <ThemeToggle />
 
             <Button
@@ -101,7 +101,7 @@ function LandingPageNav() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden backdrop-blur-lg  border-t mt-2 rounded-b-xl"
+            className="lg:hidden backdrop-blur-lg  border-t mt-2 rounded-b-xl"
           >
             <div className="mx-4 py-4 flex flex-col space-y-4">
               {navItemLanding.map((data, index) => (

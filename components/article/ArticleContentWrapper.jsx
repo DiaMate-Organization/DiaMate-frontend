@@ -23,7 +23,7 @@ export default function ArticleContentWrapper({ slug }) {
       } catch (err) {
         console.warn("⚠️ API failed, using local data as fallback", err);
         try {
-          const res = await axios.get(`${FE_HOST}/data/articles.json`);
+          const res = await axios.get(`/data/articles.json`);
           const data = res.data;
           const found = data.find((a) => a.slug === slug);
           setArticle(found);

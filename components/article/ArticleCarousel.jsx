@@ -30,7 +30,7 @@ function ArticleCarousel() {
         return data;
       } catch (err) {
         console.warn("⚠️ API failed, using local data as fallback", err);
-        const res = await axios.get(`${FE_HOST}/data/articles.json`);
+        const res = await axios.get(`/data/articles.json`);
         const data = res.data;
         SetArticles(data);
         return data;
