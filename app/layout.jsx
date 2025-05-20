@@ -42,12 +42,14 @@ export default function RootLayout({ children }) {
             </Marquee>
           </div>
 
-          {/* Navbar */}
-          <LandingPageNav />
-          <div className="flex relative w-full">
+          <div className="fixed inset-0 pointer-events-none -z-10 overflow-visible">
             <Spotlight />
           </div>
-          <main className="mx-12 md:mx-20 mt-14 lg:pl-18">{children}</main>
+          {/* Navbar */}
+          <div className="relative z-10">
+            <LandingPageNav />
+            <main className="mx-12 md:mx-20 mt-14 lg:pl-18">{children}</main>
+          </div>
           <Toaster />
           {/* Footer */}
           <Footer />

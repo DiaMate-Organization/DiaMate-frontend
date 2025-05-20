@@ -28,8 +28,10 @@ function LandingPageNav() {
       }`}
     >
       <div
-        className={`container mx-auto max-w-7xl backdrop-blur-lg rounded-xl bg-background/50 transition-all duration-300 ${
-          isScrolled ? " shadow-md py-2" : " py-4"
+        className={`container mx-auto max-w-7xl backdrop-blur-lg rounded-xl  transition-all duration-300 ${
+          isScrolled
+            ? " shadow-md py-2 bg-background/50"
+            : " py-4 bg-transparent"
         }`}
       >
         <div className="mx-4 flex justify-between items-center">
