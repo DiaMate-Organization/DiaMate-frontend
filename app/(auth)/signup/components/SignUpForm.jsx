@@ -1,7 +1,6 @@
-'use client';
+"use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useActionState, useEffect } from "react";
 import { toast } from "sonner";
 
@@ -25,19 +24,19 @@ import { Label } from "@/components/ui/label";
 import { register } from "@/lib/auth-actions";
 
 export function SignUpForm() {
-  const router = useRouter();
   const [state, formAction] = useActionState(register, null);
 
   useEffect(() => {
     if (!state) return;
-    
+
     if (state.error) {
       toast.error(state.message);
     } else {
       toast.success(state.message);
-      router.push('/login');
+      window.location.reload();
+      window.location.href = "/login";
     }
-  }, [state, router]);
+  }, [state]);
 
   return (
     <Card className="mx-auto max-w-sm">
@@ -78,7 +77,7 @@ export function SignUpForm() {
                 name="email"
                 id="email"
                 type="email"
-                placeholder="m@example.com"
+                placeholder="johndoe@example.com"
                 required
               />
             </div>
@@ -88,6 +87,7 @@ export function SignUpForm() {
                 name="password"
                 id="password"
                 type="password"
+                placeholder="••••••••••"
                 required
                 minLength={6}
               />
@@ -97,19 +97,21 @@ export function SignUpForm() {
               <Input
                 name="confirm-password"
                 id="confirm-password"
+                placeholder="••••••••••"
                 type="password"
                 required
               />
             </div>
             <div className="grid gap-2">
               <Label htmlFor="age">Umur</Label>
-              <Input 
-                name="age" 
-                id="age" 
-                type="number" 
-                min="1" 
-                max="120" 
-                required 
+              <Input
+                name="age"
+                id="age"
+                type="number"
+                min="1"
+                max="120"
+                placeholder="20"
+                required
               />
             </div>
             <div className="grid gap-2">

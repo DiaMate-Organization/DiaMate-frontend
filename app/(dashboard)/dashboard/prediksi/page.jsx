@@ -1,9 +1,10 @@
-const PrediksiPage = () => {
+export default function PrediksiPage() {
   return (
-    <main className="flex-1 p-4 md:p-6 space-y-6">
-      <p>Prediksi Page</p>
-    </main>
-  )
+    <div className="p-6 text-foreground">
+      <h2 className="text-2xl font-bold text-foreground">Prediksi Risiko Diabetes</h2>
+      <p className="mt-2 text-muted-foreground">
+        Prediksi Page
+      </p>
+    </div>
+  );
 }
-
-export default PrediksiPage

@@ -43,16 +43,6 @@ const routes = [
     path: "/dashboard/edukasi",
     icon: <BookOpen className="h-5 w-5" />,
   },
-  // {
-  //   name: "Gula Darah",
-  //   path: "/dashboard/gula-darah",
-  //   icon: <Activity className="h-5 w-5" />,
-  // },
-  // {
-  //   name: "Makanan",
-  //   path: "/dashboard/makanan",
-  //   icon: <FileText className="h-5 w-5" />,
-  // },
   {
     name: "Laporan",
     path: "/dashboard/laporan",

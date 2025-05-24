@@ -1,7 +1,6 @@
-'use client';
+"use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useActionState, useEffect } from "react";
 import { toast } from "sonner";
 
@@ -18,21 +17,20 @@ import { Label } from "@/components/ui/label";
 import { login } from "@/lib/auth-actions";
 
 export function LoginForm() {
-  const router = useRouter();
   const [state, formAction] = useActionState(login, null);
 
   useEffect(() => {
     if (!state) return;
-    
+
     // console.log('Login state:', state); // Debugging
-    
+
     if (state.error) {
       toast.error(state.message);
     } else {
-      toast.success('Login berhasil!');
-      router.push('/dashboard');
+      toast.success("Login berhasil!");
+      window.location.reload();
     }
-  }, [state, router]);
+  }, [state]);
 
   return (
     <Card className="mx-auto max-w-sm">
@@ -51,7 +49,7 @@ export function LoginForm() {
                 id="email"
                 name="email"
                 type="email"
-                placeholder="m@example.com"
+                placeholder="johndoe@example.com"
                 required
                 autoComplete="username"
               />
@@ -59,14 +57,12 @@ export function LoginForm() {
             <div className="grid gap-2">
               <div className="flex items-center">
                 <Label htmlFor="password">Password</Label>
-                <Link href="#" className="ml-auto inline-block text-sm underline">
-                  Lupa password?
-                </Link>
               </div>
               <Input
                 id="password"
                 name="password"
                 type="password"
+                placeholder="••••••••••"
                 required
                 minLength={6}
                 autoComplete="current-password"
