@@ -199,7 +199,7 @@
   --accent: oklch(0.65 0.15 230); /* Biru medium */
   --accent-foreground: var(--foreground);
 
-  --destructive: oklch(0.4 0.1 230); /* Biru gelap sebagai pengganti merah */
+  --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: var(--foreground);
 
   --border: oklch(1 0 0 / 10%);
