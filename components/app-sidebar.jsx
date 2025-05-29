@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Home, AlertCircle, ClipboardList, History, BookOpen, Heart } from "lucide-react";
+import { Home, AlertCircle, ClipboardList, History, BookOpen, Heart, ArrowLeft } from "lucide-react";
 import { NavMain } from "@/components/nav-main";
 import { NavUser } from "@/components/nav-user";
 import {
@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/sidebar";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const routes = [
   {
@@ -50,6 +51,8 @@ const routes = [
 ];
 
 export function AppSidebar({ ...props }) {
+  const pathname = usePathname();
+
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader className="p-4 border-b border-border">
@@ -73,10 +76,19 @@ export function AppSidebar({ ...props }) {
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
+          {/* Tombol kembali ke halaman utama */}
+          <SidebarMenuItem className="mt-2">
+            <SidebarMenuButton asChild tooltip="Kembali ke Beranda">
+              <Link href="/" className="flex items-center gap-3 text-muted-foreground hover:text-foreground">
+                <ArrowLeft className="h-4 w-4" />
+                <span className="text-sm">Kembali ke Beranda</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent className="">
-        <NavMain items={routes} />
+        <NavMain items={routes} currentPath={pathname} />
       </SidebarContent>
       <SidebarFooter className="border-t border-border">
         <NavUser />
