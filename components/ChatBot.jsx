@@ -41,7 +41,7 @@ const ChatBot = () => {
       
       while (retries >= 0) {
         try {
-          response = await api.post("/api/chatbot", {
+          response = await api.post("/chatbot", {
             content: message.trim(),
             role: "user"
           });
@@ -82,7 +82,7 @@ const ChatBot = () => {
           </Button>
         </SheetTrigger>
         <SheetContent
-          className="sm:max-w-md md:max-w-lg p-0 flex flex-col h-[80vh] sm:h-full"
+          className="w-full h-full p-0 flex flex-col"
           side="right"
         >
           <SheetTitle className="sr-only">DiaMate Assistant Chat</SheetTitle>
