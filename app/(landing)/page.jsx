@@ -259,7 +259,7 @@ export default function Home() {
               className="relative flex flex-col gap-4 items-center justify-center px-4"
             >
               <div className="text-3xl md:text-4xl font-bold dark:text-white text-center">
-                Mulai sekarang, Tubuhmu akan berterimaksih nanti.
+                Mulai sekarang, Tubuhmu akan berterimakasih nanti.
               </div>
               <Link href="#">
                 <Button className="rounded-full w-fit text-foreground px-4 py-2">
