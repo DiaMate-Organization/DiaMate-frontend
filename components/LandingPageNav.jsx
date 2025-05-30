@@ -4,14 +4,39 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { Ghost, Menu, X } from "lucide-react";
+import { Ghost, Menu, X, User } from "lucide-react";
 import Image from "next/image";
 import { ThemeToggle } from "./ThemeToggle";
 import { navItemLanding } from "@/lib/data";
+import { isAuthenticated, logout, getAuthToken } from "@/lib/auth-actions"; // Import fungsi auth
 
 function LandingPageNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userData, setUserData] = useState(null);
+
+  // Cek status login dan ambil data user
+  useEffect(() => {
+    const checkAuth = async () => {
+      const loggedIn = isAuthenticated();
+      setIsLoggedIn(loggedIn);
+      
+      if (loggedIn) {
+        try {
+          const token = getAuthToken();
+          // Jika Anda ingin menampilkan data user, bisa fetch profile di sini
+          // const profile = await getProfile();
+          // setUserData(profile);
+        } catch (error) {
+          console.error("Failed to fetch profile:", error);
+          logout(); // Auto logout jika token invalid
+        }
+      }
+    };
+
+    checkAuth();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +46,12 @@ function LandingPageNav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleLogout = () => {
+    logout();
+    setIsMenuOpen(false);
+    setIsLoggedIn(false);
+  };
+
   return (
     <header
       className={`fixed w-full rounded-md justify-between z-50 px-4 pt-4 ${
@@ -28,10 +59,10 @@ function LandingPageNav() {
       }`}
     >
       <div
-        className={`container mx-auto max-w-7xl backdrop-blur-lg rounded-xl  transition-all duration-300 ${
+        className={`container mx-auto max-w-7xl backdrop-blur-lg rounded-xl transition-all duration-300 ${
           isScrolled
-            ? " shadow-md py-2 bg-background/50"
-            : " py-4 bg-transparent"
+            ? "shadow-md py-2 bg-background/50"
+            : "py-4 bg-transparent"
         }`}
       >
         <div className="mx-4 flex justify-between items-center">
@@ -72,15 +103,32 @@ function LandingPageNav() {
               </Link>
             ))}
             <ThemeToggle />
-            <Link href="/login">
-              <Button className={"hover:bg-secondary"}>Sign In</Button>
-            </Link>
+            {isLoggedIn ? (
+              <div className="flex items-center gap-4">
+                <Link href="/dashboard">
+                  <Button className="gap-2 hover:bg-secondary">
+                    <User className="h-4 w-4" />
+                    {userData?.name || 'Dashboard'}
+                  </Button>
+                </Link>
+                <Button 
+                  variant="outline" 
+                  onClick={handleLogout}
+                  className="hover:bg-destructive hover:text-destructive-foreground"
+                >
+                  Logout
+                </Button>
+              </div>
+            ) : (
+              <Link href="/login">
+                <Button className="hover:bg-secondary">Sign In</Button>
+              </Link>
+            )}
           </motion.nav>
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex gap-3">
             <ThemeToggle />
-
             <Button
               variant="ghost"
               size="icon"
@@ -103,7 +151,7 @@ function LandingPageNav() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden backdrop-blur-lg  border-t mt-2 rounded-b-xl"
+            className="lg:hidden backdrop-blur-lg border-t mt-2 rounded-b-xl"
           >
             <div className="mx-4 py-4 flex flex-col space-y-4">
               {navItemLanding.map((data, index) => (
@@ -117,14 +165,43 @@ function LandingPageNav() {
                 </Link>
               ))}
 
-              <Link href={"/login"} className="w-full sm:w-auto">
-                <Button
-                  variant={"primary"}
-                  className={"bg-primary hover:bg-secondary w-full "}
+              {isLoggedIn ? (
+                <>
+                  <Link 
+                    href="/dashboard" 
+                    className="w-full sm:w-auto"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <Button
+                      variant={"primary"}
+                      className={"bg-primary hover:bg-secondary w-full gap-2"}
+                    >
+                      <User className="h-4 w-4" />
+                      Dashboard
+                    </Button>
+                  </Link>
+                  <Button
+                    variant={"outline"}
+                    className={"w-full hover:bg-destructive hover:text-destructive-foreground"}
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </Button>
+                </>
+              ) : (
+                <Link 
+                  href="/login" 
+                  className="w-full sm:w-auto"
+                  onClick={() => setIsMenuOpen(false)}
                 >
-                  Login
-                </Button>
-              </Link>
+                  <Button
+                    variant={"primary"}
+                    className={"bg-primary hover:bg-secondary w-full"}
+                  >
+                    Login
+                  </Button>
+                </Link>
+              )}
             </div>
           </motion.div>
         )}
