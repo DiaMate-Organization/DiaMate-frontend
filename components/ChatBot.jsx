@@ -4,15 +4,19 @@ import { useState, useRef, useEffect } from "react";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { MessageCircle, Send, X } from "lucide-react";
+import { MessageCircle, Send, X, LogIn } from "lucide-react";
 import api from "@/lib/api";
 import ReactMarkdown from "react-markdown";
+import { isAuthenticated } from "@/lib/auth-actions";
+import { useRouter } from "next/navigation";
 
 const ChatBot = () => {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [authChecked, setAuthChecked] = useState(false);
   const messagesEndRef = useRef(null);
 
   // Scroll to bottom of messages
@@ -24,8 +28,28 @@ const ChatBot = () => {
     scrollToBottom();
   }, [messages]);
 
+  // Check auth status when sheet opens
+  useEffect(() => {
+    if (isOpen && !authChecked) {
+      if (!isAuthenticated()) {
+        setMessages([{
+          role: "system",
+          content: "Anda perlu login untuk menggunakan chatbot. Silakan login terlebih dahulu."
+        }]);
+      }
+      setAuthChecked(true);
+    }
+  }, [isOpen, authChecked]);
+
   const handleSendMessage = async (e) => {
     e.preventDefault();
+    
+    // Check authentication first
+    if (!isAuthenticated()) {
+      router.push("/login");
+      return;
+    }
+
     if (!message.trim()) return;
 
     // Add user message to chat
@@ -45,11 +69,10 @@ const ChatBot = () => {
             content: message.trim(),
             role: "user"
           });
-          break; // Success, exit the retry loop
+          break;
         } catch (err) {
-          if (retries === 0) throw err; // No more retries, rethrow
+          if (retries === 0) throw err;
           retries--;
-          // Wait before retrying (exponential backoff)
           await new Promise(resolve => setTimeout(resolve, 1000 * (2 - retries)));
         }
       }
@@ -59,15 +82,19 @@ const ChatBot = () => {
       setMessages((prev) => [...prev, botMessage]);
     } catch (error) {
       console.error("Error sending message:", error);
-      // Add error message
       const errorMessage = {
         role: "assistant",
-        content: "Maaf, terjadi kesalahan jaringan. Silakan periksa koneksi internet Anda dan coba lagi nanti.",
+        content: "Maaf, terjadi kesalahan. Silakan coba lagi nanti.",
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleLoginRedirect = () => {
+    setIsOpen(false);
+    router.push("/login");
   };
 
   return (
@@ -100,7 +127,7 @@ const ChatBot = () => {
 
           {/* Chat Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
-            {messages.length === 0 ? (
+            {messages.length === 0 && isAuthenticated() ? (
               <div className="text-center text-muted-foreground py-8">
                 <p>Selamat datang di DiaMate Assistant!</p>
                 <p className="text-sm mt-2">
@@ -113,17 +140,32 @@ const ChatBot = () => {
                   key={index}
                   className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                 >
-                  <div
-                    className={`max-w-[80%] rounded-lg p-3 ${msg.role === "user" ? "bg-primary text-primary-foreground" : "bg-muted"}`}
-                  >
-                    {msg.role === "user" ? (
-                      <p>{msg.content}</p>
-                    ) : (
-                      <ReactMarkdown>
-                        {msg.content}
-                      </ReactMarkdown>
-                    )}
-                  </div>
+                  {msg.role === "system" ? (
+                    <div className="w-full text-center py-4">
+                      <div className="inline-block max-w-[80%] rounded-lg p-4 bg-muted">
+                        <p>{msg.content}</p>
+                        <Button 
+                          onClick={handleLoginRedirect}
+                          className="mt-3 gap-2"
+                        >
+                          <LogIn className="h-4 w-4" />
+                          Login Sekarang
+                        </Button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div
+                      className={`max-w-[80%] rounded-lg p-3 ${msg.role === "user" ? "bg-primary text-primary-foreground" : "bg-muted"}`}
+                    >
+                      {msg.role === "user" ? (
+                        <p>{msg.content}</p>
+                      ) : (
+                        <ReactMarkdown>
+                          {msg.content}
+                        </ReactMarkdown>
+                      )}
+                    </div>
+                  )}
                 </div>
               ))
             )}
@@ -149,14 +191,18 @@ const ChatBot = () => {
             <Input
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Ketik pesan Anda..."
+              placeholder={
+                isAuthenticated() 
+                  ? "Ketik pesan Anda..." 
+                  : "Login untuk mengirim pesan"
+              }
               className="flex-1"
-              disabled={isLoading}
+              disabled={!isAuthenticated() || isLoading}
             />
             <Button
               type="submit"
               size="icon"
-              disabled={!message.trim() || isLoading}
+              disabled={!isAuthenticated() || !message.trim() || isLoading}
             >
               <Send className="h-4 w-4" />
             </Button>
