@@ -56,7 +56,11 @@ export default function Home() {
               teknologi AI 🤖 dan langkah yang sederhana.
             </p>
             <div className="mt-5">
-              <InteractiveHoverButton>Mulai Assessment</InteractiveHoverButton>
+              <Link href="/dashboard/prediksi">
+                <InteractiveHoverButton>
+                  Mulai Assessment
+                </InteractiveHoverButton>
+              </Link>
             </div>
 
             <div className="flex mt-12 flex-col gap-2">
@@ -261,7 +265,7 @@ export default function Home() {
               <div className="text-3xl md:text-4xl font-bold dark:text-white text-center">
                 Mulai sekarang, Tubuhmu akan berterimakasih nanti.
               </div>
-              <Link href="#">
+              <Link href="/dashboard/prediksi">
                 <Button className="rounded-full w-fit text-foreground px-4 py-2">
                   Mulai
                 </Button>

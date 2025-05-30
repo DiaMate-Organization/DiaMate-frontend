@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { fetchAssessments } from "@/lib/assessment-actions";
-import AssessmentDetailCard from "@/components/AssessmentDetailCard";
+import AssessmentDetailCard from "@/components/assessment/AssessmentDetailCard";
 
 export default function DetailPage() {
   const params = useParams();

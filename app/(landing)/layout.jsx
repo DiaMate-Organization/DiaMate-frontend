@@ -2,7 +2,6 @@ import "../globals.css";
 import LandingPageNav from "@/components/LandingPageNav";
 import { Marquee } from "@/components/magicui/marquee";
 import Footer from "@/components/Footer";
-import { Spotlight } from "@/components/ui/spotlight-new";
 import ChatBot from "@/components/ChatBot";
 
 export default function LandingPageLayout({ children }) {
