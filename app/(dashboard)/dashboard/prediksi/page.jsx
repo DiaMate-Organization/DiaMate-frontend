@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { AssessmentForm } from "@/components/AssessmentForm";
+import { AssessmentForm } from "@/components/assessment/AssessmentForm";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { fetchAssessments } from "@/lib/assessment-actions";
 import { Loader2 } from "lucide-react";

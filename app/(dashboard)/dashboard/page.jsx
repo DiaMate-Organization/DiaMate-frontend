@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 import { Heart } from "lucide-react";
 import { fetchAssessments } from "@/lib/assessment-actions";
-import AssessmentTable from "@/components/AssessmentTable";
+import AssessmentTable from "@/components/assessment/AssessmentTable";
 import PaginationControls from "@/components/PaginationControls";
-import AssessmentSkeleton from "@/components/AssessmentSkeleton";
+import AssessmentSkeleton from "@/components/assessment/AssessmentSkeleton";
 
 export default function DashboardPage() {
   const [assessments, setAssessments] = useState([]);
@@ -63,9 +63,7 @@ export default function DashboardPage() {
         {loading ? (
           <AssessmentSkeleton />
         ) : error ? (
-          <div className="p-4 text-center text-sm text-red-500">
-            {error}
-          </div>
+          <div className="p-4 text-center text-sm text-red-500">{error}</div>
         ) : (
           <>
             <AssessmentTable assessments={paginatedAssessments} />
