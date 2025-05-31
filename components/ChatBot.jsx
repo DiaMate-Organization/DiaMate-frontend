@@ -1,7 +1,12 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MessageCircle, Send, X, LogIn } from "lucide-react";
@@ -9,6 +14,8 @@ import api from "@/lib/api";
 import ReactMarkdown from "react-markdown";
 import { isAuthenticated } from "@/lib/auth-actions";
 import { useRouter } from "next/navigation";
+import remarkBreaks from "remark-breaks";
+import remarkGfm from "remark-gfm";
 
 const ChatBot = () => {
   const router = useRouter();
@@ -18,6 +25,8 @@ const ChatBot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [authChecked, setAuthChecked] = useState(false);
   const messagesEndRef = useRef(null);
+
+  const formatMarkdown = (text) => text.replace(/(?<!\n)\n(?=\d+\. )/g, "\n\n");
 
   // Scroll to bottom of messages
   const scrollToBottom = () => {
@@ -32,10 +41,13 @@ const ChatBot = () => {
   useEffect(() => {
     if (isOpen && !authChecked) {
       if (!isAuthenticated()) {
-        setMessages([{
-          role: "system",
-          content: "Anda perlu login untuk menggunakan chatbot. Silakan login terlebih dahulu."
-        }]);
+        setMessages([
+          {
+            role: "system",
+            content:
+              "Anda perlu login untuk menggunakan chatbot. Silakan login terlebih dahulu.",
+          },
+        ]);
       }
       setAuthChecked(true);
     }
@@ -43,7 +55,7 @@ const ChatBot = () => {
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
-    
+
     // Check authentication first
     if (!isAuthenticated()) {
       router.push("/login");
@@ -62,23 +74,29 @@ const ChatBot = () => {
       // Send message to backend with retry logic
       let retries = 2;
       let response;
-      
+
       while (retries >= 0) {
         try {
           response = await api.post("/chatbot", {
             content: message.trim(),
-            role: "user"
+            role: "user",
           });
           break;
         } catch (err) {
           if (retries === 0) throw err;
           retries--;
-          await new Promise(resolve => setTimeout(resolve, 1000 * (2 - retries)));
+          await new Promise((resolve) =>
+            setTimeout(resolve, 1000 * (2 - retries))
+          );
         }
       }
 
       // Add bot response to chat
-      const botMessage = { role: "assistant", content: response.data.response.content };
+      const botMessage = {
+        role: "assistant",
+        content: response.data.response.content,
+      };
+      console.log(botMessage.content);
       setMessages((prev) => [...prev, botMessage]);
     } catch (error) {
       console.error("Error sending message:", error);
@@ -108,10 +126,7 @@ const ChatBot = () => {
             <MessageCircle className="h-6 w-6" />
           </Button>
         </SheetTrigger>
-        <SheetContent
-          className="w-full h-full p-0 flex flex-col"
-          side="right"
-        >
+        <SheetContent className="w-full h-full p-0 flex flex-col" side="right">
           <SheetTitle className="sr-only">DiaMate Assistant Chat</SheetTitle>
           {/* Chat Header */}
           <div className="border-b p-4 flex justify-between items-center">
@@ -138,13 +153,15 @@ const ChatBot = () => {
               messages.map((msg, index) => (
                 <div
                   key={index}
-                  className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                  className={`flex ${
+                    msg.role === "user" ? "justify-end" : "justify-start"
+                  }`}
                 >
                   {msg.role === "system" ? (
                     <div className="w-full text-center py-4">
                       <div className="inline-block max-w-[80%] rounded-lg p-4 bg-muted">
                         <p>{msg.content}</p>
-                        <Button 
+                        <Button
                           onClick={handleLoginRedirect}
                           className="mt-3 gap-2"
                         >
@@ -155,12 +172,18 @@ const ChatBot = () => {
                     </div>
                   ) : (
                     <div
-                      className={`max-w-[80%] rounded-lg p-3 ${msg.role === "user" ? "bg-primary text-primary-foreground" : "bg-muted"}`}
+                      className={`max-w-[80%] rounded-lg p-3 prose dark:prose-invert prose-sm ${
+                        msg.role === "user"
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-muted"
+                      }`}
                     >
                       {msg.role === "user" ? (
                         <p>{msg.content}</p>
                       ) : (
-                        <ReactMarkdown>
+                        <ReactMarkdown
+                          remarkPlugins={[remarkGfm, remarkBreaks]}
+                        >
                           {msg.content}
                         </ReactMarkdown>
                       )}
@@ -192,8 +215,8 @@ const ChatBot = () => {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder={
-                isAuthenticated() 
-                  ? "Ketik pesan Anda..." 
+                isAuthenticated()
+                  ? "Ketik pesan Anda..."
                   : "Login untuk mengirim pesan"
               }
               className="flex-1"
