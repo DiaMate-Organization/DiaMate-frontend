@@ -20,25 +20,35 @@ export function CarouselComponent({ data }) {
     >
       <CarouselContent>
         {data.map((item, index) => (
-          <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-            <div className="p-1">
-              <Card className={"p-4 h-70"}>
-                <CardContent className="flex max-w-5xl flex-col w-full items-center justify-center p-6 ">
-                  <Image
-                    width={100}
-                    height={100}
-                    src={item.image}
-                    alt="teams avatar"
-                    className="rounded-full"
-                  />
-                  <h3 className="mt-5 text-md md:text-xl text-center font-semibold">
-                    {item.name}
-                  </h3>
-                  <p className="text-gray-400 text-base text-center">
-                    {item.description}
-                  </p>
-                </CardContent>
-              </Card>
+          <CarouselItem
+            key={index}
+            className="md:basis-1/2 lg:basis-1/3"
+          >
+            <div className="p-1 pointer-events-none">
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block pointer-events-auto"
+              >
+                <Card className="p-4 h-70 hover:shadow-md transition-shadow">
+                  <CardContent className="flex max-w-5xl flex-col w-full items-center justify-center p-6">
+                    <Image
+                      width={100}
+                      height={100}
+                      src={item.image}
+                      alt="teams avatar"
+                      className="rounded-full"
+                    />
+                    <h3 className="mt-5 text-md md:text-xl text-center font-semibold">
+                      {item.name}
+                    </h3>
+                    <p className="text-gray-400 text-base text-center">
+                      {item.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </a>
             </div>
           </CarouselItem>
         ))}

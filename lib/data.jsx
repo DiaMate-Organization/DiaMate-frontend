@@ -91,37 +91,37 @@ export const teams = [
     image: "/DiaMateAssets/mas bintang.jpg",
     name: "Ridho Bintang Aulia",
     description: "Project Manager",
-    link: "https://stripe.com",
+    link: "https://www.linkedin.com/in/ridhobintangaulia/",
   },
   {
     image: "/DiaMateAssets/mas tyo.jpg",
     name: "Al Farizi Dwi Prasetyo",
     description: "Fullstack Developer",
-    link: "https://netflix.com",
+    link: "https://www.linkedin.com/in/al-farizi-dwi-prasetyo/",
   },
   {
     image: "/DiaMateAssets/mas faiz.jpg",
     name: "Muhammad Faiz",
     description: "Fullstack Developer",
-    link: "https://google.com",
+    link: "https://www.linkedin.com/in/muhammad-faiz-/",
   },
   {
     image: "/DiaMateAssets/mas leo.jpg",
     name: "Leonard Bodhi Kumaro",
     description: "Machine Learning Engineer",
-    link: "https://meta.com",
+    link: "https://www.linkedin.com/in/leonardkumaro/",
   },
   {
     image: "/DiaMateAssets/mas rian.jpg",
     name: "Riandika Fathur Rochim",
     description: "Machine Learning Engineer",
-    link: "https://amazon.com",
+    link: "https://www.linkedin.com/in/fathuro/",
   },
   {
     image: "/DiaMateAssets/mas damar.jpg",
     name: "Damar Syarafi Ramadhan",
     description: "Machine Learning Engineer",
-    link: "https://microsoft.com",
+    link: "https://www.linkedin.com/in/damar-syarafi-ramadhan-9b4122251/",
   },
 ];
 
