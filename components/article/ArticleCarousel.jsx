@@ -17,18 +17,20 @@ import { Skeleton } from "../ui/skeleton";
 function ArticleCarousel() {
   const [articles, SetArticles] = useState(null);
   const [loading, setLoading] = useState(true);
+  const FE_HOST = process.env.NEXT_PUBLIC_FE_HOST;
+  const BE_HOST = process.env.NEXT_PUBLIC_BE_HOST;
 
   useEffect(() => {
     async function getAllArticle() {
       setLoading(true);
       try {
-        const res = await axios.get(`${HOST}/`);
+        const res = await axios.get(`${FE_HOST}/data/articles.json`);
         const data = res.data;
         SetArticles(data);
         return data;
       } catch (err) {
         console.warn("⚠️ API failed, using local data as fallback", err);
-        const res = await axios.get("http://localhost:3000/data/articles.json");
+        const res = await axios.get(`/data/articles.json`);
         const data = res.data;
         SetArticles(data);
         return data;
@@ -75,9 +77,10 @@ function ArticleCarousel() {
           </CarouselItem>
         ))}
       </CarouselContent>
-
-      <CarouselPrevious />
-      <CarouselNext />
+      <div className="mt-4 flex justify-end gap-4">
+        <CarouselPrevious className="static translate-y-0 left-auto right-auto" />
+        <CarouselNext className="static translate-y-0 left-auto right-auto" />
+      </div>
     </Carousel>
   );
 }

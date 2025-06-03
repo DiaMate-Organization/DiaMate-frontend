@@ -156,27 +156,27 @@ export const faqs = [
 export const navItemLanding = [
   {
     name: "Introduction",
-    link: "#introduction",
+    link: "/#introduction",
   },
   {
     name: "Benefits",
-    link: "#benefits",
+    link: "/#benefits",
   },
   {
     name: "How It Works",
-    link: "#how-it-works",
+    link: "/#how-it-works",
   },
   {
     name: "Our Team",
-    link: "#our-team",
+    link: "/#our-team",
   },
   {
     name: "Articles",
-    link: "#articles",
+    link: "/#articles",
   },
   {
     name: "FAQ",
-    link: "#faq",
+    link: "/#faq",
   },
 ];
 
@@ -315,5 +315,38 @@ export const ArticleList = [
     </article>`,
     creator: "Rina Marlina",
     readMinutes: "4",
+  },
+];
+
+export const reviews = [
+  {
+    name: "Rina",
+    username: "@rina",
+    body: "Keren banget! Aku bisa cek risiko diabetes kapan aja tanpa ribet. UI-nya juga nyaman dipakai.",
+    img: "https://avatar.vercel.sh/rina",
+  },
+  {
+    name: "Andi",
+    username: "@andi",
+    body: "Sempet khawatir soal kesehatanku, tapi DiaMate bantu banget buat tahu kondisi awal dan ngasih arahan.",
+    img: "https://avatar.vercel.sh/andi",
+  },
+  {
+    name: "Tika",
+    username: "@tika",
+    body: "Tracking harian di dashboard-nya bikin aku lebih semangat jaga pola hidup sehat. Thanks DiaMate!",
+    img: "https://avatar.vercel.sh/tika",
+  },
+  {
+    name: "Bagas",
+    username: "@bagas",
+    body: "Suka banget sama fitur rekomendasi aktivitasnya. Simple tapi bermanfaat banget buat pemula kayak aku.",
+    img: "https://avatar.vercel.sh/bagas",
+  },
+  {
+    name: "Sari",
+    username: "@sari",
+    body: "Ini web bukan cuma informatif, tapi juga ngebantu aku lebih aware sama risiko diabetes dari sekarang.",
+    img: "https://avatar.vercel.sh/sari",
   },
 ];
