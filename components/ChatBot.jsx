@@ -96,7 +96,7 @@ const ChatBot = () => {
         role: "assistant",
         content: response.data.response.content,
       };
-      console.log(botMessage.content);
+      // console.log(botMessage.content);
       setMessages((prev) => [...prev, botMessage]);
     } catch (error) {
       console.error("Error sending message:", error);
