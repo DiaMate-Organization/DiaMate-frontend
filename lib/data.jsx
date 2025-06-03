@@ -17,19 +17,19 @@ import {
 export const univ = [
   {
     imageUrl: "/unud.jpg",
-    profileUrl: "https://github.com/dillionverma",
+    profileUrl: "https://www.unud.ac.id/",
   },
   {
     imageUrl: "/stmiktd.jpg",
-    profileUrl: "https://github.com/tomonarifeehan",
+    profileUrl: "https://trigunadharma.ac.id/",
   },
   {
     imageUrl: "/umc.jpg",
-    profileUrl: "https://github.com/BankkRoll",
+    profileUrl: "https://umc.ac.id/",
   },
   {
     imageUrl: "/gundar.jpg",
-    profileUrl: "https://github.com/safethecode",
+    profileUrl: "https://www.gunadarma.ac.id/",
   },
 ];
 
