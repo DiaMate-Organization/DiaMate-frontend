@@ -8,14 +8,14 @@ import axios from "axios";
 export default function ArticleContentWrapper({ slug }) {
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(null);
-  const FE_HOST = process.env.NEXT_PUBLIC_FE_HOST;
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
   const BE_HOST = process.env.NEXT_PUBLIC_BE_HOST;
 
   useEffect(() => {
     async function getArticle() {
       setLoading(true);
       try {
-        const res = await axios.get(`${FE_HOST}/data/articles.json`);
+        const res = await axios.get(`${API_BASE_URL}/article`);
         const data = res.data;
         const found = data.find((a) => a.slug === slug);
         setArticle(found);
