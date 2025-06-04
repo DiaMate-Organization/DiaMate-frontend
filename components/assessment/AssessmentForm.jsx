@@ -1,48 +1,43 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { toast } from 'sonner';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { useState } from "react";
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Separator } from '@/components/ui/separator';
-import { createAssessment } from '@/lib/assessment-actions';
-import { assessmentSchema } from '@/lib/assessment-validation';
+} from "@/components/ui/select";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Separator } from "@/components/ui/separator";
+import { createAssessment } from "@/lib/assessment-actions";
+import { assessmentSchema } from "@/lib/assessment-validation";
 
 export function AssessmentForm({ onSuccess }) {
   const [formData, setFormData] = useState({
-    HighBP: '0',
-    HighChol: '0',
-    Weight: '',
-    Height: '',
-    Stroke: '0',
-    HeartDiseaseorAttack: '0',
-    PhysActivity: '1',
-    HvyAlcoholConsump: '0',
-    AnyHealthcare: '1',
-    GenHlth: '3',
-    PhysHlth: '0',
-    DiffWalk: '0',
-    Sex: '0',
-    Age: '1',
-    Education: '4',
-    Income: '4',
+    HighBP: "0",
+    HighChol: "0",
+    Weight: "",
+    Height: "",
+    HeartDiseaseorAttack: "0",
+    GenHlth: "3",
+    PhysHlth: "0",
+    DiffWalk: "0",
+    Age: "1",
+    Education: "4",
+    Income: "4",
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
-    setErrors((prev) => ({ ...prev, [name]: '' }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
   const handleSubmit = async (e) => {
@@ -58,15 +53,10 @@ export function AssessmentForm({ onSuccess }) {
       HighBP: parseInt(formData.HighBP),
       HighChol: parseInt(formData.HighChol),
       BMI,
-      Stroke: parseInt(formData.Stroke),
       HeartDiseaseorAttack: parseInt(formData.HeartDiseaseorAttack),
-      PhysActivity: parseInt(formData.PhysActivity),
-      HvyAlcoholConsump: parseInt(formData.HvyAlcoholConsump),
-      AnyHealthcare: parseInt(formData.AnyHealthcare),
       GenHlth: parseInt(formData.GenHlth),
       PhysHlth: parseInt(formData.PhysHlth),
       DiffWalk: parseInt(formData.DiffWalk),
-      Sex: parseInt(formData.Sex),
       Age: parseInt(formData.Age),
       Education: parseInt(formData.Education),
       Income: parseInt(formData.Income),
@@ -80,16 +70,16 @@ export function AssessmentForm({ onSuccess }) {
       });
     }
     if (isNaN(weight) || weight <= 0) {
-      newErrors.Weight = 'Berat badan harus berupa angka lebih dari 0';
+      newErrors.Weight = "Berat badan harus berupa angka lebih dari 0";
     }
     if (isNaN(height) || height <= 0) {
-      newErrors.Height = 'Tinggi badan harus berupa angka lebih dari 0';
+      newErrors.Height = "Tinggi badan harus berupa angka lebih dari 0";
     }
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       setIsSubmitting(false);
-      toast.error('Periksa kembali input Anda, ada data yang belum valid.');
+      toast.error("Periksa kembali input Anda, ada data yang belum valid.");
       return;
     }
 
@@ -99,24 +89,19 @@ export function AssessmentForm({ onSuccess }) {
         toast.error(response.message);
       } else {
         const result = {
-          risk: response.data.data.risk_level,
-          probability:
-            response.data.data.risk_level === 'Rendah'
-              ? 0.2
-              : response.data.data.risk_level === 'Sedang'
-              ? 0.5
-              : 0.8,
-          riskFactors: response.data.data.risk_factors || [],
-          timestamp: response.data.data.created_at,
+          risk: response.data.risk_level,
+          probability: response.data.probability,
+          riskFactors: response.data.risk_factors || [],
+          timestamp: response.data.created_at,
         };
         onSuccess(result);
         toast.success(`Penilaian berhasil!`);
-        const id = response.data.data.id;
-        window.location.href= `/dashboard/riwayat/detail/${id}`
-
+        const id = response.data.id;
+        window.location.href = `/dashboard/riwayat/detail/${id}`;
       }
     } catch (err) {
-      toast.error('Terjadi kesalahan saat memproses penilaian.');
+      console.error(err);
+      toast.error("Terjadi kesalahan saat memproses penilaian.");
     } finally {
       setIsSubmitting(false);
     }
@@ -171,12 +156,6 @@ export function AssessmentForm({ onSuccess }) {
               error={errors.HighChol}
             />
             <YesNoRadioGroup
-              name="Stroke"
-              label="Apakah Anda pernah mengalami stroke?"
-              value={formData.Stroke}
-              error={errors.Stroke}
-            />
-            <YesNoRadioGroup
               name="HeartDiseaseorAttack"
               label="Apakah Anda memiliki penyakit jantung atau riwayat serangan jantung?"
               value={formData.HeartDiseaseorAttack}
@@ -187,7 +166,9 @@ export function AssessmentForm({ onSuccess }) {
           <Separator orientation="horizontal" className="my-2 md:col-span-2" />
 
           <div className="space-y-6">
-            <h3 className="text-lg font-semibold">Gaya Hidup dan Kesehatan Fisik</h3>
+            <h3 className="text-lg font-semibold">
+              Gaya Hidup dan Kesehatan Fisik
+            </h3>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <Label htmlFor="Weight" className="text-foreground">
@@ -198,7 +179,7 @@ export function AssessmentForm({ onSuccess }) {
                   id="Weight"
                   name="Weight"
                   value={formData.Weight}
-                  onChange={(e) => handleChange('Weight', e.target.value)}
+                  onChange={(e) => handleChange("Weight", e.target.value)}
                   min="0"
                   step="0.1"
                   placeholder="Contoh: 70.5"
@@ -218,7 +199,7 @@ export function AssessmentForm({ onSuccess }) {
                   id="Height"
                   name="Height"
                   value={formData.Height}
-                  onChange={(e) => handleChange('Height', e.target.value)}
+                  onChange={(e) => handleChange("Height", e.target.value)}
                   min="0"
                   step="0.1"
                   placeholder="Contoh: 165"
@@ -231,24 +212,6 @@ export function AssessmentForm({ onSuccess }) {
               </div>
             </div>
             <YesNoRadioGroup
-              name="PhysActivity"
-              label="Aktivitas fisik dalam 30 hari terakhir (selain pekerjaan)?"
-              value={formData.PhysActivity}
-              error={errors.PhysActivity}
-            />
-            <YesNoRadioGroup
-              name="HvyAlcoholConsump"
-              label="Termasuk peminum alkohol berat? (Pria: >14 minuman/minggu, Wanita: >7 minuman/minggu)"
-              value={formData.HvyAlcoholConsump}
-              error={errors.HvyAlcoholConsump}
-            />
-            <YesNoRadioGroup
-              name="AnyHealthcare"
-              label="Apakah Anda memiliki asuransi kesehatan?"
-              value={formData.AnyHealthcare}
-              error={errors.AnyHealthcare}
-            />
-            <YesNoRadioGroup
               name="DiffWalk"
               label="Apakah Anda kesulitan serius saat berjalan atau menaiki tangga?"
               value={formData.DiffWalk}
@@ -259,7 +222,9 @@ export function AssessmentForm({ onSuccess }) {
           <Separator orientation="horizontal" className="my-2 md:col-span-2" />
 
           <div className="space-y-6">
-            <h3 className="text-lg font-semibold">Kesehatan Umum dan Demografi</h3>
+            <h3 className="text-lg font-semibold">
+              Kesehatan Umum dan Demografi
+            </h3>
             <div className="space-y-4">
               <Label htmlFor="GenHlth" className="text-foreground">
                 Kondisi kesehatan umum Anda?
@@ -267,7 +232,7 @@ export function AssessmentForm({ onSuccess }) {
               <Select
                 name="GenHlth"
                 value={formData.GenHlth}
-                onValueChange={(value) => handleChange('GenHlth', value)}
+                onValueChange={(value) => handleChange("GenHlth", value)}
                 required
               >
                 <SelectTrigger className="bg-muted text-foreground border-border">
@@ -287,14 +252,15 @@ export function AssessmentForm({ onSuccess }) {
             </div>
             <div className="space-y-4">
               <Label htmlFor="PhysHlth" className="text-foreground">
-                Dalam 30 hari terakhir, berapa hari kesehatan fisik Anda tidak baik?
+                Dalam 30 hari terakhir, berapa hari kesehatan fisik Anda tidak
+                baik?
               </Label>
               <Input
                 type="number"
                 id="PhysHlth"
                 name="PhysHlth"
                 value={formData.PhysHlth}
-                onChange={(e) => handleChange('PhysHlth', e.target.value)}
+                onChange={(e) => handleChange("PhysHlth", e.target.value)}
                 min="0"
                 max="30"
                 placeholder="0-30 hari"
@@ -306,32 +272,13 @@ export function AssessmentForm({ onSuccess }) {
               )}
             </div>
             <div className="space-y-4">
-              <Label className="text-foreground">Jenis Kelamin</Label>
-              <RadioGroup
-                name="Sex"
-                value={formData.Sex}
-                onValueChange={(val) => handleChange('Sex', val)}
-                className="flex items-center space-x-6"
-              >
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="1" id="sex-male" />
-                  <Label htmlFor="sex-male">Laki-laki</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="0" id="sex-female" />
-                  <Label htmlFor="sex-female">Perempuan</Label>
-                </div>
-              </RadioGroup>
-              {errors.Sex && <p className="text-destructive text-sm mt-1">{errors.Sex}</p>}
-            </div>
-            <div className="space-y-4">
               <Label htmlFor="Age" className="text-foreground">
                 Kelompok usia Anda?
               </Label>
               <Select
                 name="Age"
                 value={formData.Age}
-                onValueChange={(value) => handleChange('Age', value)}
+                onValueChange={(value) => handleChange("Age", value)}
                 required
               >
                 <SelectTrigger className="bg-muted text-foreground border-border">
@@ -353,7 +300,9 @@ export function AssessmentForm({ onSuccess }) {
                   <SelectItem value="13">80+</SelectItem>
                 </SelectContent>
               </Select>
-              {errors.Age && <p className="text-destructive text-sm">{errors.Age}</p>}
+              {errors.Age && (
+                <p className="text-destructive text-sm">{errors.Age}</p>
+              )}
             </div>
           </div>
 
@@ -368,7 +317,7 @@ export function AssessmentForm({ onSuccess }) {
               <Select
                 name="Education"
                 value={formData.Education}
-                onValueChange={(value) => handleChange('Education', value)}
+                onValueChange={(value) => handleChange("Education", value)}
                 required
               >
                 <SelectTrigger className="bg-muted text-foreground border-border">
@@ -394,21 +343,16 @@ export function AssessmentForm({ onSuccess }) {
               <Select
                 name="Income"
                 value={formData.Income}
-                onValueChange={(value) => handleChange('Income', value)}
+                onValueChange={(value) => handleChange("Income", value)}
                 required
               >
                 <SelectTrigger className="bg-muted text-foreground border-border">
                   <SelectValue placeholder="Pilih tingkat pendapatan" />
                 </SelectTrigger>
                 <SelectContent className="bg-muted text-foreground border-border">
-                  <SelectItem value="1">Kurang dari 15 Juta/tahun</SelectItem>
-                  <SelectItem value="2">15 - 25 Juta/tahun</SelectItem>
-                  <SelectItem value="3">25 - 35 Juta/tahun</SelectItem>
-                  <SelectItem value="4">35 - 50 Juta/tahun</SelectItem>
-                  <SelectItem value="5">50 - 75 Juta/tahun</SelectItem>
-                  <SelectItem value="6">75 - 100 Juta/tahun</SelectItem>
-                  <SelectItem value="7">100 - 200 Juta/tahun</SelectItem>
-                  <SelectItem value="8">Lebih dari 200 Juta/tahun</SelectItem>
+                  <SelectItem value="1">Rendah</SelectItem>
+                  <SelectItem value="2">Sedang</SelectItem>
+                  <SelectItem value="3">Tinggi</SelectItem>
                 </SelectContent>
               </Select>
               {errors.Income && (
@@ -425,7 +369,7 @@ export function AssessmentForm({ onSuccess }) {
               disabled={isSubmitting}
               className="w-full bg-primary text-primary-foreground hover:bg-primary/90 text-lg py-6"
             >
-              {isSubmitting ? 'Mengirim...' : 'Dapatkan Hasil Penilaian'}
+              {isSubmitting ? "Mengirim..." : "Dapatkan Hasil Penilaian"}
             </Button>
           </div>
         </form>
