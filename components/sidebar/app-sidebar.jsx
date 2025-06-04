@@ -1,7 +1,15 @@
 "use client";
 
 import * as React from "react";
-import { Home, AlertCircle, ClipboardList, History, BookOpen, Heart, ArrowLeft } from "lucide-react";
+import {
+  Home,
+  AlertCircle,
+  ClipboardList,
+  History,
+  BookOpen,
+  Heart,
+  ArrowLeft,
+} from "lucide-react";
 import { NavMain } from "@/components/sidebar/nav-main";
 import { NavUser } from "@/components/sidebar/nav-user";
 import {
@@ -27,11 +35,6 @@ const routes = [
     name: "Prediksi Risiko",
     path: "/dashboard/prediksi",
     icon: AlertCircle,
-  },
-  {
-    name: "Rekomendasi",
-    path: "/dashboard/rekomendasi",
-    icon: ClipboardList,
   },
   {
     name: "Riwayat",
@@ -72,14 +75,19 @@ export function AppSidebar({ ...props }) {
                     className="object-contain"
                   />
                 </div>
-                <span className="text-lg font-bold text-foreground">DiaMate</span>
+                <span className="text-lg font-bold text-foreground">
+                  DiaMate
+                </span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
           {/* Tombol kembali ke halaman utama */}
           <SidebarMenuItem className="mt-2">
             <SidebarMenuButton asChild tooltip="Kembali ke Beranda">
-              <Link href="/" className="flex items-center gap-3 text-muted-foreground hover:text-foreground">
+              <Link
+                href="/"
+                className="flex items-center gap-3 text-muted-foreground hover:text-foreground"
+              >
                 <ArrowLeft className="h-4 w-4" />
                 <span className="text-sm">Kembali ke Beranda</span>
               </Link>

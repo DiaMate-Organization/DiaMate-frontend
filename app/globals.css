@@ -207,9 +207,9 @@
   --ring: oklch(0.7 0.2 230 / 30%);
 
   /* Hanya variasi biru untuk chart */
-  --chart-1: oklch(0.7 0.2 230);
-  --chart-2: oklch(0.65 0.18 230);
-  --chart-3: oklch(0.6 0.16 230);
+  --chart-1: #4caf50; /* hijau */
+  --chart-2: #ff9800; /* oranye */
+  --chart-3: #f44336; /* merah */
   --chart-4: oklch(0.55 0.14 230);
   --chart-5: oklch(0.5 0.12 230);
 

@@ -3,9 +3,9 @@ import Image from "next/image";
 
 export default function ArticleContent({ article }) {
   return (
-    <div className="mx-12 md:mx-20 mt-10 lg:pl-18 overflow-hidden">
+    <div className="lg:pl-18 overflow-hidden">
       <div className="flex flex-col items-center gap-5 justify-center md:mt-32">
-        <div className="mt-32 flex flex-col items-center justify-center">
+        <div className="mt-24 flex flex-col items-center justify-center">
           <h2 className="text-3xl max-w-2xl md:text-5xl lg:text-6xl font-medium text-center">
             {article.title}
           </h2>
@@ -19,7 +19,7 @@ export default function ArticleContent({ article }) {
             src={article.image}
             alt="article thumbnail"
             fill
-            className="object-cover rounded-md"
+            className="object-cover rounded-md w-full"
           />
         </div>
 
