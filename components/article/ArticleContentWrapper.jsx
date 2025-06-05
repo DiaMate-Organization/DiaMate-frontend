@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import ArticleContent from "./ArticleContent";
 import ArticleContentSkeleton from "./ArticleContentSkeleton";
 import axios from "axios";
+import { getArticleBySlug } from "@/lib/article-actions";
 
 export default function ArticleContentWrapper({ slug }) {
   const [article, setArticle] = useState(null);
@@ -15,10 +16,10 @@ export default function ArticleContentWrapper({ slug }) {
     async function getArticle() {
       setLoading(true);
       try {
-        const res = await axios.get(`${API_BASE_URL}/article`);
-        const data = res.data;
-        const found = data.find((a) => a.slug === slug);
-        setArticle(found);
+        const res = await getArticleBySlug(slug);
+        const data = res.data.article;
+        console.log(data);
+        setArticle(data);
         return;
       } catch (err) {
         console.warn("⚠️ API failed, using local data as fallback", err);
