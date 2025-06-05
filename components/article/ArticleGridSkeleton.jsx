@@ -1,9 +1,9 @@
 const { Skeleton } = require("../ui/skeleton");
 
-export default function ArticleGridSkeleton() {
+export default function ArticleGridSkeleton({ cols }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      {[...Array(6)].map((_, id) => (
+      {[...Array(cols)].map((_, id) => (
         <div key={id} className="p-1">
           <div className="border-0 bg-transparent">
             {/* Skeleton gambar */}

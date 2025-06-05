@@ -8,72 +8,41 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import Image from "next/image";
-import { ArticleList } from "@/lib/data";
-import ArticlesListSkeleton from "./ArticleListSkeleton";
-import axios from "axios";
-import { Skeleton } from "../ui/skeleton";
+import { getAllArticles } from "@/lib/article-actions";
+import ArticleCard from "./ArticleCard";
+import ArticleGridSkeleton from "./ArticleGridSkeleton";
 
 function ArticleCarousel() {
-  const [articles, SetArticles] = useState(null);
+  const [articles, setArticles] = useState(null);
   const [loading, setLoading] = useState(true);
-  const FE_HOST = process.env.NEXT_PUBLIC_FE_HOST;
-  const BE_HOST = process.env.NEXT_PUBLIC_BE_HOST;
 
   useEffect(() => {
-    async function getAllArticle() {
-      setLoading(true);
+    const getAllArticle = async () => {
       try {
-        const res = await axios.get(`${FE_HOST}/data/articles.json`);
-        const data = res.data;
-        SetArticles(data);
-        return data;
+        const response = await getAllArticles();
+        console.log(response.data);
+        setArticles(response.data.articles);
       } catch (err) {
-        console.warn("⚠️ API failed, using local data as fallback", err);
-        const res = await axios.get(`/data/articles.json`);
-        const data = res.data;
-        SetArticles(data);
-        return data;
+        console.error(err);
+        toast("error mendapatkan article edukasi");
       } finally {
         setLoading(false);
       }
-    }
+    };
 
     getAllArticle();
   }, []);
 
   return loading ? (
-    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 w-full">
-      <Skeleton className="w-full h-[280px] rounded-md" />
-      <Skeleton className="w-full h-[280px] rounded-md" />
-      <Skeleton className="w-full h-[280px] rounded-md" />
+    <div className="container mx-auto p-4 sm:p-6 space-y-6 sm:space-y-8">
+      <ArticleGridSkeleton cols={3} />
     </div>
   ) : (
     <Carousel className="w-full max-w-7xl">
       <CarouselContent className="-ml-1 gap-8">
-        {articles.map((data, index) => (
+        {articles.slice(0, 4).map((data, index) => (
           <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
-            <div className="p-1">
-              <div className={"border-0 bg-transparent"}>
-                <Image
-                  width={500}
-                  height={500}
-                  src={data.image}
-                  className="rounded-md"
-                  alt="articles image"
-                />
-                <div className="flex flex-col items-start py-2 px-2">
-                  <h3 className="text-2xl font-semibold">
-                    <a href={`/article/${data.slug}`}>{data.title}</a>
-                  </h3>
-
-                  <div className="flex mt-5 text-muted-foreground w-full items-center justify-between">
-                    <p>{data.creator}</p>
-                    <p>{data.readMinutes} Menit</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ArticleCard article={data} />
           </CarouselItem>
         ))}
       </CarouselContent>
