@@ -1,4 +1,6 @@
 "use client";
+import ArticleCard from "@/components/article/ArticleCard";
+import ArticleGridSkeleton from "@/components/article/ArticleGridSkeleton";
 import { Button } from "@/components/ui/button";
 import { getAllArticles } from "@/lib/article-actions";
 import axios from "axios";
@@ -38,31 +40,15 @@ function page() {
           </div>
         </div>
 
-        <div className="grid gird-cols-1 lg:grid-cols-3 md:gap-5">
-          {articles.map((article, id) => (
-            <div key={id} className="p-1">
-              <div className={"border-0 bg-transparent"}>
-                <Image
-                  width={500}
-                  height={500}
-                  src={article.thumbnail}
-                  className="rounded-md w-full h-80 object-cover"
-                  alt="article thumbnail"
-                />
-                <div className="flex flex-col items-start py-2 px-2">
-                  <h3 className="text-2xl font-semibold">
-                    <a href={`/article/${article.slug}`}>{article.title}</a>
-                  </h3>
-
-                  <div className="flex mt-5 text-muted-foreground w-full items-center justify-between">
-                    <p>{article.author}</p>
-                    <p>{article.read_minutes} Menit</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        {loading ? (
+          <ArticleGridSkeleton cols={6} />
+        ) : (
+          <div className="grid gird-cols-1 md:grid-cols- lg:grid-cols-3 gap-5">
+            {articles.map((article, id) => (
+              <ArticleCard key={id} article={article} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

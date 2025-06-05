@@ -14,18 +14,19 @@ export default function ArticleContent({ article }) {
           </div>
         </div>
 
-        <div className="relative md:mt-20 w-full lg:w-1/2 aspect-[16/9]">
+        <div className="relative w-full max-w-3xl aspect-video mx-auto">
           <Image
-            src={article.image}
+            src={article.thumbnail}
             alt="article thumbnail"
             fill
-            className="object-cover rounded-md w-full"
+            sizes="(min-width: 1024px) 800px, 100vw"
+            className="object-cover rounded-md"
           />
         </div>
 
         <div
           dangerouslySetInnerHTML={{ __html: article.content }}
-          className="prose dark:prose-invert"
+          className="mt-15 prose dark:prose-invert"
         ></div>
       </div>
     </div>
