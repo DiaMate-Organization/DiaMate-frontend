@@ -19,11 +19,11 @@ export default function DashboardPage() {
     const loadData = async () => {
       try {
         setLoading(true);
-        
+
         // Fetch overview data and assessments in parallel
         const [overviewResult, assessmentsResult] = await Promise.all([
           fetchOverview(),
-          fetchAssessments()
+          fetchAssessments(),
         ]);
 
         if (overviewResult.error) {
@@ -79,36 +79,49 @@ export default function DashboardPage() {
             <div className="bg-card text-card-foreground rounded-lg border p-4 sm:p-6">
               <div className="flex items-center space-x-2">
                 <Activity className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                <h3 className="text-sm sm:text-base font-medium">Total Assessment</h3>
+                <h3 className="text-sm sm:text-base font-medium">
+                  Total Assessment
+                </h3>
               </div>
-              <p className="text-2xl sm:text-3xl font-bold mt-2">{assessments.length}</p>
+              <p className="text-2xl sm:text-3xl font-bold mt-2">
+                {assessments.length}
+              </p>
             </div>
-            
+
             <div className="bg-card text-card-foreground rounded-lg border p-4 sm:p-6">
               <div className="flex items-center space-x-2">
                 <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-green-500" />
                 <h3 className="text-sm sm:text-base font-medium">Bulan Ini</h3>
               </div>
               <p className="text-2xl sm:text-3xl font-bold mt-2">
-                {assessments.filter(a => {
-                  const assessmentDate = new Date(a.created_at || a.date);
-                  const now = new Date();
-                  return assessmentDate.getMonth() === now.getMonth() && 
-                         assessmentDate.getFullYear() === now.getFullYear();
-                }).length}
+                {
+                  assessments.filter((a) => {
+                    const assessmentDate = new Date(a.created_at || a.date);
+                    const now = new Date();
+                    return (
+                      assessmentDate.getMonth() === now.getMonth() &&
+                      assessmentDate.getFullYear() === now.getFullYear()
+                    );
+                  }).length
+                }
               </p>
             </div>
 
             <div className="bg-card text-card-foreground rounded-lg border p-4 sm:p-6 sm:col-span-2 lg:col-span-1">
               <div className="flex items-center space-x-2">
                 <div className="h-4 w-4 sm:h-5 sm:w-5 bg-yellow-500 rounded-full"></div>
-                <h3 className="text-sm sm:text-base font-medium">Terakhir Dinilai</h3>
+                <h3 className="text-sm sm:text-base font-medium">
+                  Terakhir Dinilai
+                </h3>
               </div>
               <p className="text-sm sm:text-base font-medium mt-2 text-muted-foreground">
-                {assessments.length > 0 
-                  ? assessments.sort((a, b) => new Date(b.created_at || b.date) - new Date(a.created_at || a.date))[0].date
-                  : "Belum ada assessment"
-                }
+                {assessments.length > 0
+                  ? assessments.sort(
+                      (a, b) =>
+                        new Date(b.created_at || b.date) -
+                        new Date(a.created_at || a.date)
+                    )[0].date
+                  : "Belum ada assessment"}
               </p>
             </div>
           </div>
@@ -118,39 +131,47 @@ export default function DashboardPage() {
         <div className="grid gap-6 lg:gap-8">
           {/* Overview Chart */}
           <div className="w-full">
-            <OverviewChart 
-              chartData={overviewData} 
-              loading={loading} 
-            />
+            <OverviewChart chartData={overviewData} loading={loading} />
           </div>
 
           {/* Latest Assessments */}
           <div className="w-full">
-            <LatestAssessments 
-              assessments={assessments} 
-              loading={loading} 
-            />
+            <LatestAssessments assessments={assessments} loading={loading} />
           </div>
         </div>
 
         {/* Quick Actions - Mobile Friendly */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
           <Button asChild variant="outline" size="lg" className="h-auto p-4">
-            <Link href="/dashboard/assessment" className="flex flex-col items-center space-y-2">
+            <Link
+              href="/dashboard/prediksi"
+              className="flex flex-col items-center space-y-2"
+            >
               <Plus className="h-6 w-6" />
               <div className="text-center">
-                <div className="font-medium text-sm sm:text-base">Mulai Assessment</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Lakukan penilaian risiko baru</div>
+                <div className="font-medium text-sm sm:text-base">
+                  Mulai Assessment
+                </div>
+                <div className="text-xs sm:text-sm text-muted-foreground">
+                  Lakukan penilaian risiko baru
+                </div>
               </div>
             </Link>
           </Button>
-          
+
           <Button asChild variant="outline" size="lg" className="h-auto p-4">
-            <Link href="/dashboard/riwayat" className="flex flex-col items-center space-y-2">
+            <Link
+              href="/dashboard/riwayat"
+              className="flex flex-col items-center space-y-2"
+            >
               <Activity className="h-6 w-6" />
               <div className="text-center">
-                <div className="font-medium text-sm sm:text-base">Lihat Riwayat</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Semua assessment sebelumnya</div>
+                <div className="font-medium text-sm sm:text-base">
+                  Lihat Riwayat
+                </div>
+                <div className="text-xs sm:text-sm text-muted-foreground">
+                  Semua assessment sebelumnya
+                </div>
               </div>
             </Link>
           </Button>
