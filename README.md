@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📱 Frontend - DiaMate
 
-## Getting Started
+Ini adalah repository untuk bagian **frontend** dari proyek capstone **CodingCamp by Bank DBS**.  
+Aplikasi ini dikembangkan sebagai solusi untuk Memantai kesehatan penderita diabetes
 
-First, run the development server:
+**Link terkait:**  
+- Backend: [Backend Repo](https://github.com/DiaMate-Organization/diamate-be)  
+- Demo: [Demo Preview](https://diamate-fe.vercel.app)
+
+---
+
+## 🚀 Tech Stack
+
+- Framework: NextJS
+- Styling: Tailwind CSS, ShadCN, MagicUI
+- Library tambahan: Axios, Rechart, Dll
+
+---
+
+## 📦 Cara Menjalankan Project
 
 ```bash
+# 1. Clone repo ini
+git clone https://github.com/DiaMate-Organization/DiaMate-frontend.git
+cd DiaMate-frontend
+
+# 2. Install dependency
+npm install
+
+# 3. Jalankan di mode development
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🔐 Konfigurasi Environment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Buat file `.env.local` dan isi dengan variabel berikut:
 
-## Learn More
+- NEXT_PUBLIC_API_BASE_URL = [API Url]
+- NEXT_PUBLIC_FE_HOST = [FE Url]
 
-To learn more about Next.js, take a look at the following resources:
+Pastikan semua nilai environment sesuai dengan konfigurasi backend atau layanan pihak ketiga yang digunakan.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## 📄 Lisensi
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Project ini dibuat untuk kebutuhan **pembelajaran dan tugas akhir (capstone)** dalam program **CodingCamp by Bank DBS**.  
+Tidak untuk penggunaan komersial.
