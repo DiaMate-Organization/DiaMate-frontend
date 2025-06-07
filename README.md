@@ -48,4 +48,5 @@ Pastikan semua nilai environment sesuai dengan konfigurasi backend atau layanan 
 ## 📄 Lisensi
 
 Project ini dibuat untuk kebutuhan **pembelajaran dan tugas akhir (capstone)** dalam program **CodingCamp by Bank DBS**.  
-Tidak untuk penggunaan komersial.
+Tidak untuk penggunaan komersial. 
+
