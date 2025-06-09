@@ -1,7 +1,7 @@
 # 📱 Frontend - DiaMate
 
 Ini adalah repository untuk bagian **frontend** dari proyek capstone **CodingCamp by Bank DBS**.  
-Aplikasi ini dikembangkan sebagai solusi untuk Memantai kesehatan penderita diabetes
+Aplikasi ini dikembangkan sebagai solusi untuk Memantau kesehatan penderita diabetes
 
 **Link terkait:**  
 - Backend: [Backend Repo](https://github.com/DiaMate-Organization/diamate-be)  
